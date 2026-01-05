@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orgaanic – Hero Landing</title>
+
+  <!-- Optional: swap/remove if you want fully offline -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f3faf6;
+      --surface: #ffffff;
+      --ink: #0d1b14;
+      --muted: rgba(13,27,20,.72);
+
+      --green-900:#0f3a2a;
+      --green-800:#15513b;
+      --green-700:#1b5e43;
+
+      --lime-500:#cbe86b;
+      --lime-600:#bde85f;
+      --lime-700:#a8dc48;
+
+      --stroke: rgba(255,255,255,.28);
+      --shadow: 0 18px 50px rgba(0,0,0,.18);
+      --radius-xl: 20px;
+      --radius-pill: 999px;
+
+      /* Replace this with your own image:
+         Example: url("./hero.jpg") (keep hero.jpg in same folder)
+      */
+      --hero-bg: url("./creatives/hero.png");
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background: var(--bg);
+    }
+    a{ color:inherit; text-decoration:none; }
+    button{ font-family:inherit; }
+
+    .container{ width:min(1180px, calc(100% - 40px)); margin:0 auto; }
+    .flex{ display:flex; }
+    .items-center{ align-items:center; }
+    .justify-between{ justify-content:space-between; }
+    .gap-4{ gap:16px; }
+    .nowrap{ white-space:nowrap; }
+
+    /* ----- Top bar ----- */
+    .topbar{
+      background: var(--green-700);
+      color: rgba(255,255,255,.92);
+      font-size: 13px;
+      padding: 10px 0;
+      position: relative;
+      z-index: 60; /* keep above hero */
+    }
+    .topbar a{
+      color: rgba(255,255,255,.92);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .topbar .right{
+      opacity:.95;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .topbar .meta{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      opacity:.95;
+    }
+    .icon{ width:16px; height:16px; display:inline-block; vertical-align:middle; }
+    .icon svg{ width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:2; }
+
+    /* ----- Navbar ----- */
+    .navwrap{
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(10,40,28,.08);
+
+      /* FIX: ensure nav + dropdowns render above hero background */
+      position: sticky;
+      top: 0;
+      z-index: 80;
+    }
+
+    .navbar{
+      padding: 16px 0;
+      position: relative;
+      z-index: 90; /* dropdowns inherit from this stacking context */
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:-0.02em;
+      color: var(--green-800);
+      user-select:none;
+    }
+    .brand .logo{
+      width:38px; height:38px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background: rgba(21,81,59,.08);
+      border:1px solid rgba(21,81,59,.12);
+    }
+    .brand .word{ font-size: 22px; }
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap: 22px;
+      font-weight:600;
+      color: rgba(18,60,43,.82);
+    }
+    .navlinks > .link{
+      position:relative;
+      padding: 10px 2px;
+      cursor:pointer;
+    }
+    .navlinks > .link:hover{ color: rgba(18,60,43,1); }
+
+    .caret{
+      margin-left:6px;
+      width:10px; height:10px;
+      opacity:.75;
+      transform: translateY(1px);
+    }
+
+    /* Dropdown */
+    .dropdown{
+      position:absolute;
+      top: 100%;
+      left: -10px;
+      min-width: 210px;
+      background: var(--surface);
+      border: 1px solid rgba(10,40,28,.10);
+      border-radius: 14px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.14);
+      padding: 8px;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: .18s ease;
+
+      /* FIX: force dropdown above hero */
+      z-index: 999;
+    }
+    .link:hover .dropdown{
+      opacity:1;
+      transform: translateY(6px);
+      pointer-events:auto;
+    }
+    .dropdown a{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding: 10px 10px;
+      border-radius: 12px;
+      font-weight:600;
+      color: rgba(12,40,28,.90);
+    }
+    .dropdown a:hover{ background: rgba(21,81,59,.06); }
+
+    .nav-actions{ display:flex; align-items:center; gap: 14px; }
+
+    .cart{
+      position:relative;
+      width:44px; height:44px;
+      display:grid;
+      place-items:center;
+      border-radius: 999px;
+      border: 1px solid rgba(10,40,28,.12);
+      background: rgba(255,255,255,.75);
+      cursor:pointer;
+    }
+    .badge{
+      position:absolute;
+      top: -6px;
+      right: -6px;
+      width:20px; height:20px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      font-size:12px;
+      font-weight:800;
+      color: rgba(18,60,43,1);
+      background: var(--lime-600);
+      border: 2px solid rgba(255,255,255,.95);
+    }
+
+    .btn{
+      border:0;
+      cursor:pointer;
+      border-radius: var(--radius-pill);
+      padding: 12px 18px;
+      font-weight:800;
+      letter-spacing:-0.01em;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+      will-change: transform;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-primary{
+      background: var(--lime-600);
+      color: rgba(18,60,43,1);
+      box-shadow: 0 14px 30px rgba(164,221,72,.25);
+    }
+    .btn-primary:hover{ filter: brightness(1.02); }
+
+    .btn-outline{
+      background: transparent;
+      color: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.38);
+    }
+    .btn-outline:hover{ background: rgba(255,255,255,.08); }
+
+    .hamburger{
+      width:44px; height:44px;
+      border-radius:999px;
+      border:1px solid rgba(10,40,28,.12);
+      background: rgba(255,255,255,.75);
+      display:none;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+    }
+    .hamburger span{
+      width:18px; height:2px;
+      background: rgba(18,60,43,.88);
+      display:block;
+      position:relative;
+      border-radius:999px;
+    }
+    .hamburger span::before,
+    .hamburger span::after{
+      content:"";
+      position:absolute;
+      left:0;
+      width:18px; height:2px;
+      background: rgba(18,60,43,.88);
+      border-radius:999px;
+    }
+    .hamburger span::before{ top:-6px; }
+    .hamburger span::after{ top:6px; }
+
+    .mobile-panel{ display:none; padding: 10px 0 18px; }
+    .mobile-panel .card{
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(10,40,28,.10);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.10);
+    }
+    .mobile-panel a{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding: 12px 10px;
+      border-radius: 12px;
+      font-weight:700;
+      color: rgba(12,40,28,.92);
+    }
+    .mobile-panel a:hover{ background: rgba(21,81,59,.06); }
+
+    /* ----- Hero ----- */
+    .hero{
+      position:relative;
+      z-index: 0; /* FIX: keep hero below sticky nav */
+      min-height: 74vh;
+      display:flex;
+      align-items:stretch;
+      overflow:hidden;
+      background: #153f2f;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image: var(--hero-bg);
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(1.02);
+      z-index:0;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(1200px 700px at 8% 20%, rgba(204,232,107,.18), transparent 55%),
+        linear-gradient(90deg, rgba(12,40,28,.82) 0%, rgba(12,40,28,.55) 38%, rgba(12,40,28,.30) 65%, rgba(12,40,28,.55) 100%);
+      z-index:1;
+    }
+
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      padding: 64px 0 64px;
+      display:flex;
+      align-items:center;
+      min-height: 74vh;
+    }
+
+    .hero-content{ width:min(640px, 100%); }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,.24);
+      color: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(6px);
+      font-weight:600;
+      letter-spacing:-0.01em;
+    }
+
+    .h1{
+      margin: 16px 0 12px;
+      font-size: clamp(40px, 4.6vw, 64px);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: rgba(255,255,255,.96);
+      font-weight: 800;
+      text-shadow: 0 12px 30px rgba(0,0,0,.28);
+    }
+    .lead{
+      margin: 0 0 22px;
+      max-width: 520px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.75);
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top: 18px;
+    }
+
+    .scribble{
+      position:absolute;
+      right: -140px;
+      top: 50%;
+      width: 560px;
+      height: 560px;
+      transform: translateY(-50%) rotate(-6deg);
+      opacity: .65;
+      z-index: 2;
+      pointer-events:none;
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 16px 40px rgba(0,0,0,.25));
+    }
+
+    .watermark{
+      position:absolute;
+      left: 50%;
+      bottom: -28px;
+      transform: translateX(-50%);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      font-size: clamp(54px, 9vw, 120px);
+      color: rgba(255,255,255,.12);
+      text-transform: uppercase;
+      z-index: 2;
+      user-select:none;
+      pointer-events:none;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 980px){
+      .navlinks{ display:none; }
+      .hamburger{ display:flex; }
+    }
+    @media (max-width: 720px){
+      .topbar .left{ display:none; }
+      .topbar .right{ justify-content:flex-start; }
+      .hero-inner{ padding: 48px 0 56px; }
+      .scribble{ right:-220px; width:520px; height:520px; opacity:.55; }
+      .btn{ padding: 12px 16px; }
+    }
+
+    .mobile-panel.open{ display:block; }
+  </style>
+</head>
+
+<body>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container flex items-center justify-between gap-4">
+      <div class="left">
+        Are you Ready to Free Tree Services Today? <a href="#contact">Contact Us</a>
+      </div>
+
+      <div class="right">
+        <div class="meta">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6 12 13 2 6"/></svg>
+          </span>
+          <span class="nowrap">agriculturehome@orgaanic.com</span>
+        </div>
+        <div class="meta">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>
+          </span>
+          <span class="nowrap">Mon–Sat · 8am–6pm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <div class="navwrap">
+    <header class="navbar">
+      <div class="container flex items-center justify-between gap-4">
+        <!-- Brand -->
+        <a class="brand" href="#">
+          <span class="logo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M20 4c-7.2 0-12.7 4.2-14.9 10.3C3.7 18 6.6 20 9.7 20c6 0 10.3-5.1 10.3-16z"
+                    stroke="rgba(21,81,59,.95)" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M6 16c3.5-3.5 7.4-5.5 12-6"
+                    stroke="rgba(21,81,59,.75)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="word">Orgaanic</span>
+        </a>
+
+        <!-- Desktop links -->
+        <nav class="navlinks" aria-label="Primary">
+          <a class="link" href="#home">Home</a>
+
+          <div class="link" tabindex="0" role="button" aria-haspopup="true">
+            Page
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <div class="dropdown" role="menu" aria-label="Page menu">
+              <a href="#about">About</a>
+              <a href="#team">Team</a>
+              <a href="#pricing">Pricing</a>
+            </div>
+          </div>
+
+          <div class="link" tabindex="0" role="button" aria-haspopup="true">
+            Services
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <div class="dropdown" role="menu" aria-label="Services menu">
+              <a href="#service-1">Home Gardening</a>
+              <a href="#service-2">Organic Farming</a>
+              <a href="#service-3">Consultation</a>
+            </div>
+          </div>
+
+          <div class="link" tabindex="0" role="button" aria-haspopup="true">
+            Blog
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <div class="dropdown" role="menu" aria-label="Blog menu">
+              <a href="#posts">Latest Posts</a>
+              <a href="#guides">Guides</a>
+              <a href="#news">News</a>
+            </div>
+          </div>
+
+          <a class="link" href="#contact">Contact</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="nav-actions">
+          <button class="cart" type="button" aria-label="Cart">
+            <span class="badge" id="cartCount">0</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6h15l-2 9H7L6 6Z" fill="none" stroke="rgba(18,60,43,.9)" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M6 6 5 3H2" fill="none" stroke="rgba(18,60,43,.9)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm9 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+                    fill="none" stroke="rgba(18,60,43,.9)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <a class="btn btn-primary" href="#start">Start Growing Now</a>
+
+          <button class="hamburger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu (JS toggles) -->
+      <div class="container mobile-panel" id="mobilePanel">
+        <div class="card">
+          <a href="#home">Home</a>
+          <a href="#about">Page</a>
+          <a href="#service-1">Services</a>
+          <a href="#posts">Blog</a>
+          <a href="#contact">Contact</a>
+          <div style="padding:12px 10px;">
+            <a class="btn btn-primary" href="#start" style="width:100%; justify-content:center;">
+              Start Growing Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- HERO -->
+  <main class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="pill">Nature-Friendly Living Starts Here</div>
+
+        <h1 class="h1">
+          Grow It Yourself –<br>
+          The Organic Way
+        </h1>
+
+        <p class="lead">
+          Welcome to Orgaanic your trusted partner in home-based agriculture.
+          Whether it’s a balcony garden or a backyard farm, we make it easy.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#start">Get Started Now</a>
+          <a class="btn btn-outline" href="#contact">Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <svg class="scribble" viewBox="0 0 600 600" aria-hidden="true">
+      <path d="M70 470c60-120 160-240 300-300 90-40 170-35 220 10
+               M95 520c70-150 190-290 350-340 70-22 120-14 155 5"
+            fill="none" stroke="rgba(203,232,107,.95)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <div class="watermark">AGRICULTURE</div>
+  </main>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const panel = document.getElementById("mobilePanel");
+
+    menuBtn?.addEventListener("click", () => {
+      const isOpen = panel.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Example: cart count (optional)
+    const cartCount = document.getElementById("cartCount");
+    let count = 0;
+
+    document.querySelector(".cart")?.addEventListener("click", () => {
+      count = (count + 1) % 10;
+      cartCount.textContent = String(count);
+    });
+  </script>
+
+  <!-- Dummy anchors -->
+  <div id="start"></div>
+  <div id="contact"></div>
+</body>
+</html>
