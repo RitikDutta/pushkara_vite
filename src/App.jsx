@@ -54,6 +54,27 @@ function App() {
     return () => ctx.revert()
   }, [])
 
+  useEffect(() => {
+    const heroEl = heroRef.current
+    const parallaxEl = heroEl?.querySelector('.hero-parallax')
+    if (!parallaxEl) return
+
+    const handle = () => {
+      const scrolled = window.scrollY
+      const height = window.innerHeight
+      const offset = Math.min(scrolled, height)
+      parallaxEl.style.transform = `translateY(${offset * -0.35}px)`
+    }
+
+    handle()
+    window.addEventListener('scroll', handle)
+    window.addEventListener('resize', handle)
+    return () => {
+      window.removeEventListener('scroll', handle)
+      window.removeEventListener('resize', handle)
+    }
+  }, [])
+
   const prevImage = () => setActiveImage((prev) => (prev - 1 + productImages.length) % productImages.length)
   const nextImage = () => setActiveImage((prev) => (prev + 1) % productImages.length)
 
@@ -182,8 +203,9 @@ function App() {
       </div>
 
       <main>
-        <section className="hero" id="hero">
-          <div className="hero-inner shell" ref={heroRef}>
+        <section className="hero" id="hero" ref={heroRef}>
+          <div className="hero-parallax" aria-hidden="true" />
+          <div className="hero-inner shell">
             <div className="hero-content">
               <div className="pill">Nature-Friendly Living Starts Here</div>
 

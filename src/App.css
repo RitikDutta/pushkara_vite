@@ -284,19 +284,7 @@
   display: flex;
   align-items: stretch;
   overflow: hidden;
-  background: #3c2a12;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('/hero_bg.png');
-  background-size: cover;
-  background-position: center;
-  filter: saturate(1.08) contrast(1.04);
-  transform: scale(1.03);
-  z-index: 0;
+  background: linear-gradient(140deg, #3c2a12 0%, #2d1e0b 50%, #1d1307 100%);
 }
 
 .hero::after {
@@ -307,6 +295,16 @@
     radial-gradient(1200px 700px at 8% 20%, rgba(246, 205, 108, 0.22), transparent 55%),
     linear-gradient(90deg, rgba(34, 22, 9, 0.88) 0%, rgba(37, 24, 10, 0.62) 38%, rgba(42, 28, 12, 0.34) 65%, rgba(30, 18, 6, 0.62) 100%);
   z-index: 1;
+}
+
+.hero-parallax {
+  position: absolute;
+  inset: 0;
+  background: url('/hero_bg.png') center/cover no-repeat;
+  filter: saturate(1.08) contrast(1.04);
+  transform: translateY(0);
+  will-change: transform;
+  z-index: 0;
 }
 
 .hero-inner {
