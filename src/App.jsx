@@ -10,6 +10,7 @@ function App() {
   const appRef = useRef(null)
   const heroRef = useRef(null)
   const productRef = useRef(null)
+  const saleMarqueeRef = useRef(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeImage, setActiveImage] = useState(0)
 
@@ -46,6 +47,32 @@ function App() {
           scrollTrigger: {
             trigger: productRef.current,
             start: 'top 78%',
+          },
+        })
+      }
+
+      if (saleMarqueeRef.current) {
+        gsap.utils.toArray('.sale-track').forEach((track) => {
+          gsap.fromTo(
+            track,
+            { xPercent: -50 },
+            {
+              xPercent: 0,
+              repeat: -1,
+              ease: 'none',
+              duration: 18,
+            },
+          )
+        })
+
+        gsap.from('.sale-marquee', {
+          opacity: 0,
+          y: 24,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: saleMarqueeRef.current,
+            start: 'top 92%',
           },
         })
       }
@@ -226,6 +253,15 @@ function App() {
           </svg>
 
           <div className="watermark">AGRICULTURE</div>
+        </section>
+
+        <section className="sale-marquee" ref={saleMarqueeRef}>
+          <div className="sale-track">
+            <span>Summer Sale ✨ Flat 15% OFF | USE CODE: SUMMER</span>
+            <span>FREE SHIPPING above ₹1499</span>
+            <span>Summer Sale ✨ Flat 15% OFF | USE CODE: SUMMER</span>
+            <span>FREE SHIPPING above ₹1499</span>
+          </div>
         </section>
 
         <section className="product" id="product" ref={productRef}>
