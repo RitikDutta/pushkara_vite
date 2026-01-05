@@ -63,7 +63,7 @@ function App() {
       const scrolled = window.scrollY
       const height = window.innerHeight
       const offset = Math.min(scrolled, height)
-      parallaxEl.style.transform = `translateY(${offset * -0.35}px)`
+      parallaxEl.style.transform = `translateY(${offset * -0.25}px)`
     }
 
     handle()
