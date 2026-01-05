@@ -80,30 +80,6 @@ function App() {
 
   return (
     <div className="page" ref={appRef}>
-      <div className="topbar">
-        <div className="shell topbar-inner">
-          <div className="topbar-left">
-            Pushkara Organic · Bilona A2 Ghee from Aravalli hills · <a href="mailto:care@pushkara.com">Talk to us</a>
-          </div>
-          <div className="topbar-right">
-            <span className="meta">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 4h16v16H4z" />
-                <path d="M22 6 12 13 2 6" />
-              </svg>
-              care@pushkara.com
-            </span>
-            <span className="meta">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v6l4 2" />
-              </svg>
-              Mon–Sat · 8am–6pm
-            </span>
-          </div>
-        </div>
-      </div>
-
       <div className="navwrap">
         <header className="nav">
           <div className="shell nav-inner">
