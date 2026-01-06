@@ -359,7 +359,6 @@
   text-shadow:
     0 12px 28px rgba(0, 0, 0, 0.35),
     0 0 40px rgba(255, 227, 158, 0.18);
-  backdrop-filter: blur(4px);
 }
 
 .product {
