@@ -300,10 +300,12 @@
   color: rgba(255, 248, 225, 0.96);
   font-weight: 800;
   text-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+  word-break: keep-all;
 }
 
 .hero-line {
   display: block;
+  white-space: nowrap;
 }
 
 .char {
