@@ -324,7 +324,10 @@
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-top: 18px;
+  margin-top: 12px;
+  width: 100%;
+  justify-content: flex-start;
+  transform: translate(20px, 0px);
 }
 
 .scribble {
@@ -367,9 +370,11 @@
 .product {
   position: relative;
   padding: 4.4rem 0 3.6rem;
-  background: linear-gradient(180deg, rgba(45, 30, 12, 0.8) 0%, rgba(26, 16, 6, 0.9) 100%);
-  border-top: 1px solid rgba(255, 224, 170, 0.08);
-  border-bottom: 1px solid rgba(255, 224, 170, 0.08);
+  background: #fef4db;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  color: #39251a;
+  font-family: 'Anek Latin', 'Space Grotesk', 'Inter', sans-serif;
 }
 
 .product-grid {
@@ -386,7 +391,7 @@
 
 .product-lead {
   margin: 0 0 1.1rem;
-  color: rgba(250, 235, 204, 0.82);
+  color: #785434;
   line-height: 1.65;
 }
 
@@ -453,7 +458,7 @@
 
 .product-note {
   margin-top: 0.8rem;
-  color: rgba(250, 235, 204, 0.78);
+  color: #785434;
   line-height: 1.6;
 }
 
@@ -489,7 +494,7 @@
   position: relative;
   overflow: hidden;
   background: #fed525;
-  color: #1d1408;
+  color: #39251a;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -498,13 +503,21 @@
   display: inline-flex;
   gap: 38px;
   white-space: nowrap;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  font-weight: 900;
+  font-family: 'Anek Latin', 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 18px 0;
   will-change: transform;
   transform: translateX(-50%);
+}
+
+.sale-icon {
+  width: 28px;
+  height: 28px;
+  margin-left: 14px;
+  transform: translateY(3px);
 }
 
 @keyframes float {

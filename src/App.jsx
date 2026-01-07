@@ -20,14 +20,10 @@ function App() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } })
 
-      tl.from('.pill', { y: 18, opacity: 0 })
-        .from(
-          '.hero-title .char',
-          { y: 90, opacity: 0, stagger: 0.028, ease: 'elastic.out(1, 0.6)' },
-          '-=0.12',
-        )
-        .from('.hero-sub', { y: 22, opacity: 0 }, '-=0.18')
-        .from('.hero-actions .btn', { y: 14, opacity: 0, stagger: 0.08 }, '-=0.12')
+      tl.from('.pill', { x: -32, opacity: 0 })
+        .from('.hero-title', { x: -52, opacity: 0, ease: 'power2.out' }, '-=0.12')
+        .from('.hero-sub', { x: -30, opacity: 0 }, '-=0.1')
+        .from('.hero-actions .btn', { x: -24, opacity: 0, stagger: 0.08 }, '-=0.08')
 
       if (productRef.current) {
         gsap.from(productRef.current.querySelector('.product-copy'), {
@@ -257,10 +253,22 @@ function App() {
 
         <section className="sale-marquee" ref={saleMarqueeRef}>
           <div className="sale-track">
-            <span>Summer Sale ✨ Flat 15% OFF | USE CODE: SUMMER</span>
-            <span>FREE SHIPPING above ₹1499</span>
-            <span>Summer Sale ✨ Flat 15% OFF | USE CODE: SUMMER</span>
-            <span>FREE SHIPPING above ₹1499</span>
+            <span>
+              Summer Sale · Flat 15% OFF | USE CODE: SUMMER
+              <img src="/icon-sparkle-1.svg" alt="" className="sale-icon" />
+            </span>
+            <span>
+              FREE SHIPPING above ₹1499
+              <img src="/icon-sparkle-1.svg" alt="" className="sale-icon" />
+            </span>
+            <span>
+              Summer Sale · Flat 15% OFF | USE CODE: SUMMER
+              <img src="/icon-sparkle-1.svg" alt="" className="sale-icon" />
+            </span>
+            <span>
+              FREE SHIPPING above ₹1499
+              <img src="/icon-sparkle-1.svg" alt="" className="sale-icon" />
+            </span>
           </div>
         </section>
 
