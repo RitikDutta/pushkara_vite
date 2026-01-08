@@ -7,15 +7,15 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-gradient-to-b from-[#f2fbf7] via-white to-[#f5f7ff]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.08),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(251,191,36,0.08),transparent_32%)]" />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-10 sm:py-14">
-        <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2 md:auto-rows-[minmax(0,1fr)] md:h-[520px]">
+      <div className="relative mx-auto max-w-6xl lg:max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] px-4 py-10 sm:py-14">
+        <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2 md:auto-rows-[minmax(0,1fr)] md:h-[620px]">
           <div className="md:col-span-2 md:row-span-2">
             <div className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-white shadow-xl shadow-emerald-50/60">
               <div className="absolute -left-16 -top-10 h-48 w-48 rounded-full bg-emerald-100/70 blur-3xl" />
               <div className="absolute -right-10 bottom-0 h-44 w-44 rounded-full bg-amber-100/70 blur-3xl" />
 
-              <div className="relative flex h-full flex-col gap-8 p-6 sm:p-8 lg:p-10 md:flex-row md:items-center md:justify-between">
-                <div className="flex max-w-xl flex-col gap-4">
+              <div className="relative flex h-full flex-row items-center justify-between gap-6 p-4 sm:p-6 lg:p-10">
+                <div className="flex w-full max-w-xl flex-col gap-4">
                   <div className="inline-flex items-center gap-2 self-start rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 shadow-sm shadow-emerald-100">
                     <span className="h-2 w-2 rounded-full bg-emerald-500" />
                     Exclusive offer
@@ -37,11 +37,11 @@ export default function Hero() {
                   </button>
                 </div>
 
-                <div className="relative flex w-full justify-center md:max-w-[440px]">
+                <div className="relative flex w-1/2 min-w-[220px] max-w-[280px] justify-center sm:max-w-[360px] md:max-w-[480px] lg:max-w-[560px] xl:max-w-[620px]">
                   <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-emerald-100 opacity-70 blur-3xl" />
                   <div className="absolute -left-12 bottom-2 h-44 w-44 rounded-full bg-amber-100 opacity-80 blur-3xl" />
 
-                  <div className="relative grid aspect-[4/5] w-full max-w-[400px] place-items-center overflow-hidden rounded-[28px] border border-amber-100/70 bg-gradient-to-b from-amber-50 via-white to-emerald-50 shadow-lg shadow-amber-100/60">
+                  <div className="relative grid aspect-[4/5] w-full place-items-center overflow-hidden rounded-[28px] border border-amber-100/70 bg-gradient-to-b from-amber-50 via-white to-emerald-50 shadow-lg shadow-amber-100/60">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(251,191,36,0.12),transparent_38%)]" />
                     <img
                       src={heroImage}
