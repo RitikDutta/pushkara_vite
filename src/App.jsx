@@ -26,13 +26,23 @@ function App() {
         .from('.hero-actions .btn', { x: -24, opacity: 0, stagger: 0.08 }, '-=0.08')
 
       if (productRef.current) {
-        gsap.from(productRef.current.querySelector('.product-copy'), {
+        gsap.from(productRef.current.querySelector('.product-card'), {
           y: 60,
           opacity: 0,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: productRef.current,
-            start: 'top 78%',
+            start: 'top 55%',
+          },
+        })
+
+        gsap.from('.product-copy', {
+          x: -40,
+          opacity: 0,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: productRef.current,
+            start: 'top 55%',
           },
         })
 
@@ -42,9 +52,24 @@ function App() {
           ease: 'power2.out',
           scrollTrigger: {
             trigger: productRef.current,
-            start: 'top 78%',
+            start: 'top 55%',
           },
         })
+
+        gsap.fromTo(
+          '.product-visual',
+          { y: -40 },
+          {
+            y: 40,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: productRef.current,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true,
+            },
+          },
+        )
       }
 
       if (saleMarqueeRef.current) {
