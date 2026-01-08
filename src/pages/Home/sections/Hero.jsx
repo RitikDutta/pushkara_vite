@@ -1,5 +1,6 @@
 import React from "react";
 
+const heroBg = "/hero_bg.png";
 const heroImage = "/hero_image.png";
 
 export default function Hero() {
@@ -8,12 +9,12 @@ export default function Hero() {
       <div className="relative mx-auto max-w-6xl lg:max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] px-4 py-10 sm:py-14">
         <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2 md:auto-rows-[minmax(0,1fr)] md:h-[620px]">
           <div className="md:col-span-2 md:row-span-2">
-            <div className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] shadow-xl shadow-emerald-50/60">
-              <div className="absolute -left-16 -top-10 h-48 w-48 rounded-full bg-emerald-100/70 blur-3xl" />
-              <div className="absolute -right-10 bottom-0 h-44 w-44 rounded-full bg-amber-100/70 blur-3xl" />
-
-              <div className="relative flex h-full flex-row items-stretch justify-between gap-6 max-[487px]:gap-4">
-                <div className="flex w-full max-w-xl flex-col justify-center gap-4 p-4 sm:p-6 lg:p-10 max-[487px]:gap-3 max-[487px]:max-w-[240px] max-[487px]:p-3">
+            <div
+              className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-cover bg-no-repeat bg-right shadow-xl shadow-emerald-50/60"
+              style={{ backgroundImage: `url(${heroBg})` }}
+            >
+              <div className="relative flex h-full items-stretch justify-between gap-6 max-[487px]:gap-4">
+                <div className="flex max-w-xl flex-col justify-center gap-4 p-4 sm:p-6 lg:p-10 max-[487px]:gap-3 max-[487px]:max-w-[240px] max-[487px]:p-3">
                   <div className="inline-flex items-center gap-2 self-start rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 shadow-sm shadow-emerald-100 max-[487px]:px-2.5 max-[487px]:py-1 max-[487px]:text-[11px]">
                     <span className="h-2 w-2 rounded-full bg-emerald-500" />
                     Exclusive offer
@@ -35,11 +36,8 @@ export default function Hero() {
                   </button>
                 </div>
 
-                <div className="relative flex w-1/2 min-w-[220px] max-w-[280px] items-end justify-center self-stretch pb-0 pr-4 sm:pr-6 lg:pr-10 sm:max-w-[360px] md:w-[clamp(360px,42vw,600px)] md:min-w-[360px] md:max-w-[600px] max-[487px]:min-w-[180px] max-[487px]:max-w-[220px] max-[487px]:pr-3">
-                  <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-emerald-100 opacity-70 blur-3xl" />
-                  <div className="absolute -left-12 bottom-2 h-44 w-44 rounded-full bg-amber-100 opacity-80 blur-3xl" />
-
-                  <div className="relative flex h-full w-full items-end justify-center overflow-hidden rounded-[28px] border border-amber-100/70 bg-[#fff2d4] shadow-lg shadow-amber-100/60">
+                <div className="relative flex w-1/2 min-w-[220px] max-w-[280px] items-end justify-center self-stretch pt-4 pr-4 sm:pt-6 sm:pr-6 lg:pt-10 lg:pr-10 sm:max-w-[360px] md:w-[clamp(360px,42vw,600px)] md:min-w-[360px] md:max-w-[600px] max-[487px]:min-w-[180px] max-[487px]:max-w-[220px] max-[487px]:pt-3 max-[487px]:pr-3">
+                  <div className="relative flex h-full w-full items-end justify-center overflow-hidden bg-transparent">
                     <img
                       src={heroImage}
                       alt="Delivery hero with fresh groceries"
@@ -47,7 +45,6 @@ export default function Hero() {
                       loading="lazy"
                     />
                   </div>
-                  <div className="absolute inset-x-10 bottom-0 h-10 rounded-full bg-emerald-500/15 blur-2xl" />
                 </div>
               </div>
             </div>
