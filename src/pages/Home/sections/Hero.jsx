@@ -1,105 +1,97 @@
 import React from "react";
 
+const heroImage = "/hero-illustration.svg";
+
 export default function Hero() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-10">
-      {/* Outer grid controls the “equal height” behavior on desktop */}
-      <div className="grid gap-4 lg:grid-cols-12 lg:grid-rows-2 lg:auto-rows-fr lg:h-[520px]">
-        {/* BIG LEFT CARD */}
-        <div className="lg:col-span-8 lg:row-span-2 h-full">
-          <div className="h-full rounded-3xl border bg-white overflow-hidden shadow-sm">
-            <div className="h-full grid md:grid-cols-2">
-              {/* Content */}
-              <div className="p-6 sm:p-8 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 self-start rounded-full border px-3 py-1 text-xs font-medium text-black/70">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                  100% Pure • A2 • Bilona Method
-                </div>
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#f2fbf7] via-white to-[#f5f7ff]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.08),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(251,191,36,0.08),transparent_32%)]" />
 
-                <h1 className="mt-4 text-3xl sm:text-4xl font-bold leading-tight">
-                  A2 Gir Cow Ghee
-                  <span className="block text-black/60">
-                    Bilona churned • Slow-cooked • Small-batch
-                  </span>
-                </h1>
+      <div className="relative mx-auto max-w-6xl px-4 py-10 sm:py-14">
+        <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2 md:auto-rows-[minmax(0,1fr)] md:h-[520px]">
+          <div className="md:col-span-2 md:row-span-2">
+            <div className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-white shadow-xl shadow-emerald-50/60">
+              <div className="absolute -left-16 -top-10 h-48 w-48 rounded-full bg-emerald-100/70 blur-3xl" />
+              <div className="absolute -right-10 bottom-0 h-44 w-44 rounded-full bg-amber-100/70 blur-3xl" />
 
-                <p className="mt-3 text-sm sm:text-base text-black/60">
-                  Traditional bilona ghee made from Gir cow milk — rich aroma, clean taste,
-                  and crafted for daily wellness.
-                </p>
+              <div className="relative flex h-full flex-col gap-8 p-6 sm:p-8 lg:p-10 md:flex-row md:items-center md:justify-between">
+                <div className="flex max-w-xl flex-col gap-4">
+                  <div className="inline-flex items-center gap-2 self-start rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 shadow-sm shadow-emerald-100">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    Exclusive offer
+                    <span className="text-[#ff5c5c]">25% Off</span>
+                  </div>
 
-                <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                  {/* Replace this with Shopify Buy Button component/embed */}
-                  <button className="px-5 py-3 rounded-2xl bg-black text-white font-medium hover:opacity-90 transition">
-                    Buy Now
-                  </button>
+                  <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl md:text-[40px] md:leading-[1.1]">
+                    Fresh food, fair prices,
+                    <span className="block text-emerald-600">fast delivery.</span>
+                  </h1>
 
-                  <button className="px-5 py-3 rounded-2xl border font-medium hover:bg-black/5 transition">
-                    See Benefits
+                  <p className="text-sm text-gray-600 sm:text-base">
+                    Fresh veggies full of vitamins for your health. Quality produce delivered
+                    right to you.
+                  </p>
+
+                  <button className="mt-2 w-fit rounded-xl bg-[#ff5c5c] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:translate-y-[1px] hover:shadow">
+                    Shop now
                   </button>
                 </div>
 
-                <div className="mt-6 flex flex-wrap gap-2 text-xs text-black/60">
-                  <span className="rounded-full border px-3 py-1">A2 Only</span>
-                  <span className="rounded-full border px-3 py-1">No Chemicals</span>
-                  <span className="rounded-full border px-3 py-1">Mud Pot Cooked</span>
-                  <span className="rounded-full border px-3 py-1">Lab Tested</span>
-                </div>
-              </div>
+                <div className="relative flex w-full justify-center md:max-w-[440px]">
+                  <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-emerald-100 opacity-70 blur-3xl" />
+                  <div className="absolute -left-12 bottom-2 h-44 w-44 rounded-full bg-amber-100 opacity-80 blur-3xl" />
 
-              {/* Image area */}
-              <div className="relative bg-gradient-to-br from-amber-50 to-white grid place-items-center p-6">
-                {/* Replace with your jar image */}
-                <div className="relative w-full max-w-sm aspect-[4/5] rounded-3xl border bg-white shadow-sm grid place-items-center">
-                  <span className="text-sm text-black/50">Your Ghee Jar Image Here</span>
-
-                  {/* A subtle “glow” behind product */}
-                  <div className="pointer-events-none absolute -z-10 inset-0 blur-3xl opacity-50 bg-gradient-to-r from-amber-200 via-yellow-100 to-emerald-100" />
+                  <div className="relative grid aspect-[4/5] w-full max-w-[400px] place-items-center overflow-hidden rounded-[28px] border border-amber-100/70 bg-gradient-to-b from-amber-50 via-white to-emerald-50 shadow-lg shadow-amber-100/60">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(251,191,36,0.12),transparent_38%)]" />
+                    <img
+                      src={heroImage}
+                      alt="Delivery hero with fresh groceries"
+                      className="relative z-10 h-full w-full object-contain p-4 sm:p-6"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="absolute inset-x-10 bottom-0 h-10 rounded-full bg-emerald-500/15 blur-2xl" />
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* RIGHT SIDE: On mobile = 2 columns (horizontal), on desktop = 1 column (vertical) */}
-        <div className="lg:col-span-4 lg:row-span-2 grid grid-cols-2 gap-4 lg:grid-cols-1 lg:grid-rows-2 lg:h-full">
-          {/* TOP RIGHT CARD */}
-          <div className="h-full rounded-3xl border bg-white overflow-hidden shadow-sm relative">
-            <div className="p-5 sm:p-6 h-full flex flex-col justify-between">
-              <div>
-                <p className="text-xs font-medium text-emerald-600">For Daily Wellness</p>
-                <h3 className="mt-1 text-lg font-semibold">Morning Ritual</h3>
-                <p className="mt-2 text-sm text-black/60">
-                  Add to warm water / meals — simple habit, big impact.
-                </p>
+          <div className="grid h-full grid-cols-2 gap-4 md:col-span-1 md:row-span-2 md:h-full md:grid-cols-1 md:grid-rows-2">
+            <div className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-white/90 shadow-lg shadow-emerald-50/60 backdrop-blur">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/70 via-white/60 to-transparent" />
+              <div className="absolute -right-10 top-6 h-20 w-20 rotate-6 rounded-3xl bg-white/70 shadow-inner shadow-emerald-100" />
+
+              <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-emerald-600">Healthy Food</p>
+                  <h3 className="text-lg font-semibold text-gray-900">Organic Market</h3>
+                  <p className="text-sm text-gray-600">
+                    Start your daily shopping with some organic food.
+                  </p>
+                </div>
+                <button className="self-start text-sm font-semibold text-emerald-700 transition hover:opacity-75">
+                  Shop now →
+                </button>
               </div>
-
-              <button className="self-start text-sm font-medium hover:opacity-70 transition">
-                Learn more →
-              </button>
             </div>
 
-            {/* Replace with background image if you want */}
-            <div className="absolute right-0 top-0 h-full w-2/5 bg-gradient-to-l from-emerald-50 to-transparent" />
-          </div>
+            <div className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-white/90 shadow-lg shadow-amber-50/60 backdrop-blur">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-50/80 via-white/60 to-transparent" />
+              <div className="absolute -left-8 bottom-6 h-16 w-16 rotate-3 rounded-3xl bg-white/70 shadow-inner shadow-amber-100" />
 
-          {/* BOTTOM RIGHT CARD */}
-          <div className="h-full rounded-3xl border bg-white overflow-hidden shadow-sm relative">
-            <div className="p-5 sm:p-6 h-full flex flex-col justify-between">
-              <div>
-                <p className="text-xs font-medium text-amber-600">Limited Batch</p>
-                <h3 className="mt-1 text-lg font-semibold">Bilona Crafted</h3>
-                <p className="mt-2 text-sm text-black/60">
-                  Curd → churned butter → slow-cooked ghee (traditional process).
-                </p>
+              <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-[#ff5c5c]">25% Off</p>
+                  <h3 className="text-lg font-semibold text-gray-900">Nut Collection</h3>
+                  <p className="text-sm text-gray-600">
+                    Add your organic vegetables & fruits, or a promo image.
+                  </p>
+                </div>
+                <button className="self-start text-sm font-semibold text-emerald-700 transition hover:opacity-75">
+                  Shop now →
+                </button>
               </div>
-
-              <button className="self-start text-sm font-medium hover:opacity-70 transition">
-                How it’s made →
-              </button>
             </div>
-
-            <div className="absolute right-0 top-0 h-full w-2/5 bg-gradient-to-l from-amber-50 to-transparent" />
           </div>
         </div>
       </div>
