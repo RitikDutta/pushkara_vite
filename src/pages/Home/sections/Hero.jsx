@@ -2,8 +2,6 @@ import React from "react";
 
 const heroBg = "/hero_bg.png";
 const heroImage = "/hero_image.png";
-const secondBanner = "/second_banner.png";
-const thirdBanner = "/third_banner.png";
 
 export default function Hero() {
   return (
@@ -52,19 +50,16 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="grid h-full grid-cols-2 gap-4 md:col-span-1 md:row-span-2 md:h-full md:grid-cols-1 md:grid-rows-2">
-            <div
-              className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-cover bg-center shadow-lg shadow-emerald-50/60"
-              style={{ backgroundImage: `url(${secondBanner})` }}
-            >
+          <div className="grid h-full grid-cols-2 auto-rows-[minmax(200px,1fr)] gap-4 sm:auto-rows-[minmax(240px,1fr)] md:col-span-1 md:row-span-2 md:h-full md:grid-cols-1 md:grid-rows-2">
+            <div className="relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/second_banner_pot.png')] bg-cover bg-center shadow-lg shadow-emerald-50/60 sm:min-h-[240px] md:bg-[url('/second_banner.png')]">
               <div className="absolute -right-10 top-6 h-20 w-20 rotate-6 rounded-3xl bg-white/70 shadow-inner shadow-emerald-100" />
 
               <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
                 <div className="space-y-2">
-                  <p className="text-xs font-semibold text-[#7a521e]">Healthy Food</p>
-                  <h3 className="text-lg font-semibold text-[#7a521e]">Organic Market</h3>
+                  {/* <p className="text-xs font-semibold text-[#7a521e]">Healthy Food</p> */}
+                  {/* <h3 className="text-lg font-semibold text-[#7a521e]">Organic Market</h3> */}
                   <p className="text-sm text-[#7a521e]">
-                    Start your daily shopping with some organic food.
+                    {/* Start your daily shopping with some organic food. */}
                   </p>
                 </div>
                 <button className="self-start text-sm font-semibold text-[#7a521e] transition hover:opacity-75">
@@ -73,18 +68,15 @@ export default function Hero() {
               </div>
             </div>
 
-            <div
-              className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-cover bg-center shadow-lg shadow-amber-50/60"
-              style={{ backgroundImage: `url(${thirdBanner})` }}
-            >
+            <div className="relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/third_banner_pot.png')] bg-cover bg-center shadow-lg shadow-amber-50/60 sm:min-h-[240px] md:bg-[url('/third_banner.png')]">
               <div className="absolute -left-8 bottom-6 h-16 w-16 rotate-3 rounded-3xl bg-white/70 shadow-inner shadow-amber-100" />
 
               <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
                 <div className="space-y-2">
-                  <p className="text-xs font-semibold text-[#7a521e]">25% Off</p>
-                  <h3 className="text-lg font-semibold text-[#7a521e]">Nut Collection</h3>
+                  {/* <p className="text-xs font-semibold text-[#7a521e]">25% Off</p> */}
+                  {/* <h3 className="text-lg font-semibold text-[#7a521e]">Nut Collection</h3> */}
                   <p className="text-sm text-[#7a521e]">
-                    Add your organic vegetables & fruits, or a promo image.
+                    {/* Add your organic vegetables & fruits, or a promo image. */}
                   </p>
                 </div>
                 <button className="self-start text-sm font-semibold text-[#7a521e] transition hover:opacity-75">
