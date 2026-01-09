@@ -125,11 +125,11 @@ export default function WhyChooseUs() {
 function FeatureItem({ icon: Icon, title, text, rowIndex, side }) {
   return (
     <div
-      className="why-us-row flex items-start gap-5"
+      className="why-us-row group flex items-start gap-5"
       data-row={rowIndex}
       data-side={side}
     >
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f6c244] text-[#4b2e18] shadow-[0_12px_20px_rgba(246,196,68,0.3)]">
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f6c244] text-[#4b2e18] shadow-[0_12px_20px_rgba(246,196,68,0.3)] transition-colors duration-500 delay-0 group-hover:delay-150 group-hover:bg-[#4b2e18] group-hover:text-white">
         <Icon className="h-5 w-5" />
       </span>
       <div className="space-y-2">
