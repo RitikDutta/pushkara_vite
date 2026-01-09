@@ -486,6 +486,34 @@ body,
     right: -6px;
   }
 
+  .why-us-section {
+    background:
+      radial-gradient(520px 300px at 15% 18%, rgba(255, 220, 150, 0.35), transparent 62%),
+      radial-gradient(520px 300px at 85% 22%, rgba(255, 213, 140, 0.3), transparent 60%),
+      linear-gradient(180deg, #fff4df 0%, #fff0d4 100%);
+    color: #4b2e18;
+    font-family: "Alegreya Sans", "Trebuchet MS", sans-serif;
+  }
+
+  .why-us-texture {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(186, 138, 68, 0.18) 0.6px, transparent 0.6px);
+    background-size: 4px 4px;
+    opacity: 0.22;
+    mix-blend-mode: multiply;
+  }
+
+  .why-us-title {
+    font-family: "Cormorant Garamond", "Palatino Linotype", "Book Antiqua", serif;
+  }
+
+  .why-us-eyebrow {
+    font-family: "Cinzel", "Trajan Pro", "Times New Roman", serif;
+    letter-spacing: 0.4em;
+  }
+
   @media (min-width: 640px) {
     .product-frame {
       inset: 26px;
