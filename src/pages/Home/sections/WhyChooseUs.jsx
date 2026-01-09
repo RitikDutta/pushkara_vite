@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const whyUsImage = "/why_us.png";
 
@@ -39,11 +41,46 @@ const rightFeatures = [
 ];
 
 export default function WhyChooseUs() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.from(".why-us-heading > *", {
+        opacity: 0,
+        y: 34,
+        duration: 1.1,
+        ease: "power2.out",
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: ".why-us-heading",
+          start: "top 78%",
+        },
+      });
+
+      [0, 1, 2].forEach((rowIndex) => {
+        gsap.from(`.why-us-row[data-row="${rowIndex}"]`, {
+          opacity: 0,
+          y: 40,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: `.why-us-row[data-row="${rowIndex}"][data-side="left"]`,
+            start: "top 80%",
+          },
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="why-us-section relative overflow-hidden">
+    <section className="why-us-section relative overflow-hidden" ref={sectionRef}>
       <div className="why-us-texture" />
       <div className="relative mx-auto max-w-[1480px] px-4 pt-14 sm:pt-16 lg:pt-20 pb-0">
-        <div className="flex flex-col items-center text-center">
+        <div className="why-us-heading flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase text-[#7a521e]">
             <SparkIcon className="h-4 w-4 text-[#f6c244]" />
             <span className="why-us-eyebrow">Why Choose Us</span>
@@ -56,8 +93,8 @@ export default function WhyChooseUs() {
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1.6fr)_auto_minmax(0,1.6fr)] lg:items-stretch">
           <div className="space-y-16 pb-12 pt-10 sm:pb-14 sm:pt-12 lg:pb-16">
-            {leftFeatures.map((feature) => (
-              <FeatureItem key={feature.title} {...feature} />
+            {leftFeatures.map((feature, index) => (
+              <FeatureItem key={feature.title} rowIndex={index} side="left" {...feature} />
             ))}
           </div>
 
@@ -72,8 +109,8 @@ export default function WhyChooseUs() {
           </div>
 
           <div className="space-y-16 pb-12 pt-10 sm:pb-14 sm:pt-12 lg:pb-16">
-            {rightFeatures.map((feature) => (
-              <FeatureItem key={feature.title} {...feature} />
+            {rightFeatures.map((feature, index) => (
+              <FeatureItem key={feature.title} rowIndex={index} side="right" {...feature} />
             ))}
           </div>
         </div>
@@ -85,9 +122,13 @@ export default function WhyChooseUs() {
   );
 }
 
-function FeatureItem({ icon: Icon, title, text }) {
+function FeatureItem({ icon: Icon, title, text, rowIndex, side }) {
   return (
-    <div className="flex items-start gap-5">
+    <div
+      className="why-us-row flex items-start gap-5"
+      data-row={rowIndex}
+      data-side={side}
+    >
       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f6c244] text-[#4b2e18] shadow-[0_12px_20px_rgba(246,196,68,0.3)]">
         <Icon className="h-5 w-5" />
       </span>
