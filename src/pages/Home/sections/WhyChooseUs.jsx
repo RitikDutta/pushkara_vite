@@ -55,7 +55,7 @@ export default function WhyChooseUs() {
         </div>
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1.6fr)_auto_minmax(0,1.6fr)] lg:items-stretch">
-          <div className="space-y-10 pb-12 sm:pb-14 lg:pb-16">
+          <div className="space-y-16 pb-12 pt-10 sm:pb-14 sm:pt-12 lg:pb-16">
             {leftFeatures.map((feature) => (
               <FeatureItem key={feature.title} {...feature} />
             ))}
@@ -71,7 +71,7 @@ export default function WhyChooseUs() {
             />
           </div>
 
-          <div className="space-y-10 pb-12 sm:pb-14 lg:pb-16">
+          <div className="space-y-16 pb-12 pt-10 sm:pb-14 sm:pt-12 lg:pb-16">
             {rightFeatures.map((feature) => (
               <FeatureItem key={feature.title} {...feature} />
             ))}
