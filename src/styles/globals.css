@@ -364,9 +364,8 @@ body,
 
   .product-image-stage {
     position: relative;
-    width: 100%;
-    max-width: 520px;
-    aspect-ratio: 4 / 3;
+    width: min(100%, 640px);
+    aspect-ratio: 5 / 4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -403,7 +402,7 @@ body,
 
   .product-image-stack {
     position: relative;
-    width: min(100%, 520px);
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -508,6 +507,18 @@ body,
 
     .product-image-nav--right {
       right: 8px;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .product-image-stage {
+      width: min(100%, 520px);
+      aspect-ratio: 4 / 3;
+    }
+
+    .product-image-nav {
+      width: 36px;
+      height: 36px;
     }
   }
 }

@@ -125,24 +125,24 @@ export default function Product() {
       <SparkleIcon className="product-sparkle hidden sm:block" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:py-16 lg:py-20">
-        <section className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          <div className="product-copy flex flex-col gap-6">
-            <div className="flex items-center gap-4">
+        <section className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          <div className="product-copy order-2 flex flex-col gap-6 text-center sm:text-left lg:order-1">
+            <div className="flex items-center justify-center gap-4 sm:justify-start">
               <span className="h-[1px] w-12 bg-[#f6c244]/70" />
               <span className="product-eyebrow text-[11px] font-semibold uppercase text-[#f6c244]">
                 Signature Batch
               </span>
             </div>
 
-            <h1 className="product-title text-4xl font-semibold text-[#fff3d6] sm:text-5xl lg:text-6xl">
+            <h1 className="product-title text-3xl font-semibold text-[#fff3d6] sm:text-5xl lg:text-6xl">
               Golden Pottery Ghee
             </h1>
 
-            <p className="max-w-xl text-sm text-[#f7e6c2]/85 sm:text-base">
+            <p className="mx-auto max-w-xl text-sm text-[#f7e6c2]/85 sm:mx-0 sm:text-base">
               Slow-cooked, nutty, and deeply aromatic. A spoonful of comfort for every meal.
             </p>
 
-            <div className="flex flex-wrap items-end gap-4">
+            <div className="flex flex-wrap items-end justify-center gap-4 sm:justify-start">
               <span className="product-price text-3xl font-semibold text-[#f6c244] sm:text-4xl">
                 Rs 1,999
               </span>
@@ -151,44 +151,28 @@ export default function Product() {
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              <button className="btn-gold rounded-xl px-5 py-3 text-sm font-semibold">
+            <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
+              <button className="btn-gold w-full rounded-xl px-5 py-3 text-sm font-semibold sm:w-auto">
                 Buy Now
               </button>
-              <button className="btn-outline rounded-xl px-5 py-3 text-sm font-semibold">
+              <button className="btn-outline w-full rounded-xl px-5 py-3 text-sm font-semibold sm:w-auto">
                 View Details
               </button>
             </div>
 
-            <div className="flex flex-wrap gap-3 text-[11px]">
-              <span className="badge-gold rounded-full px-3 py-1">Small batch</span>
-              <span className="badge-gold rounded-full px-3 py-1">Hand churned</span>
-              <span className="badge-gold rounded-full px-3 py-1">Gift ready</span>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-8 pt-2 text-[11px] uppercase tracking-[0.2em] text-[#f7e6c2]/75">
-              <div className="product-feature">
-                <span className="product-feature-icon">
-                  <PotIcon />
-                </span>
-                Small batch
-              </div>
-              <div className="product-feature">
-                <span className="product-feature-icon">
-                  <ChurnIcon />
-                </span>
-                Hand churned
-              </div>
-              <div className="product-feature">
-                <span className="product-feature-icon">
-                  <GiftIcon />
-                </span>
-                Gift ready
-              </div>
+            <div className="mx-auto max-w-xl space-y-2 sm:mx-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#f6c244]/80">
+                What makes it special
+              </p>
+              <p className="text-sm text-[#f7e6c2]/85 sm:text-base">
+                Crafted in small batches using the traditional bilona method. We
+                slow-cook the cream for a deep, nutty aroma and seal it in glass
+                to keep every spoonful rich, clean, and comforting.
+              </p>
             </div>
           </div>
 
-          <div className="product-visual flex flex-col items-center gap-6 lg:items-end">
+          <div className="product-visual order-1 flex flex-col items-center gap-6 lg:order-2 lg:items-end">
             <div className="product-image-stage">
               <button
                 type="button"
@@ -249,61 +233,6 @@ export default function Product() {
         </section>
       </div>
     </main>
-  );
-}
-
-function PotIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      aria-hidden="true"
-    >
-      <path d="M6 9h12l-1.2 9.2a3 3 0 0 1-3 2.6H10.2a3 3 0 0 1-3-2.6L6 9Z" />
-      <path d="M9 6h6" />
-      <path d="M8 9V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-      <path d="M5 9h14" />
-    </svg>
-  );
-}
-
-function ChurnIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      aria-hidden="true"
-    >
-      <path d="M4 16c2.5-2 6-2 8.5 0s6 2 7.5 0" />
-      <path d="M7 13c2-1.6 4.7-1.6 6.8 0 2 1.6 4.7 1.6 6.2 0" />
-      <path d="M6 10c2-1.6 4.7-1.6 6.8 0 2 1.6 4.7 1.6 6.2 0" />
-      <path d="M12 4v3" />
-      <path d="M9.5 7h5" />
-    </svg>
-  );
-}
-
-function GiftIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      aria-hidden="true"
-    >
-      <path d="M4 11h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Z" />
-      <path d="M4 11h16" />
-      <path d="M12 11v10" />
-      <path d="M7 8c0-1.4 1.1-2.5 2.5-2.5 1.2 0 2.1.7 2.5 1.6.4-.9 1.3-1.6 2.5-1.6C16.9 5.5 18 6.6 18 8c0 1.8-2.2 3-6 3-3.8 0-6-1.2-6-3Z" />
-    </svg>
   );
 }
 
