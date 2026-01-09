@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const imageOptions = [
   {
@@ -15,17 +17,50 @@ const imageOptions = [
 
 export default function Product() {
   const [activeImage, setActiveImage] = useState(imageOptions[0]);
+  const productRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.from(".product-copy > *", {
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: ".product-copy",
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".product-visual", {
+        opacity: 0,
+        y: 28,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".product-visual",
+          start: "top 85%",
+        },
+      });
+    }, productRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <main
       className="relative min-h-screen overflow-hidden bg-[#39251a] text-[#f7e6c2]"
       style={{ fontFamily: '"Trebuchet MS", "Segoe UI", sans-serif' }}
+      ref={productRef}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,242,212,0.18),transparent_35%),radial-gradient(circle_at_85%_10%,rgba(246,194,68,0.16),transparent_40%)]" />
 
       <div className="relative mx-auto max-w-6xl px-4 py-14 sm:py-16">
-        <section className="flex flex-col items-center gap-10 lg:flex-row lg:items-center animate-fade-up">
-          <div className="w-full max-w-xl space-y-6 lg:max-w-none lg:flex-1">
+        <section className="flex flex-col items-center gap-10 lg:flex-row lg:items-center">
+          <div className="product-copy w-full max-w-xl space-y-6 lg:max-w-none lg:flex-1">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#f6c244]">
               Signature Batch
             </p>
@@ -70,7 +105,7 @@ export default function Product() {
             </div>
           </div>
 
-          <div className="flex w-full flex-col items-center gap-6 lg:w-[45%]">
+          <div className="product-visual flex w-full flex-col items-center gap-6 lg:w-[45%]">
             <img
               src={activeImage.image}
               alt={activeImage.name}

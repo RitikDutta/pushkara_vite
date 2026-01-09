@@ -38,4 +38,33 @@ body,
   .animate-fade-in {
     animation: fade-in 0.6s ease-out both;
   }
+
+  .shine-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine-card::after {
+    content: "";
+    position: absolute;
+    top: -120%;
+    left: -60%;
+    width: 60%;
+    height: 240%;
+    pointer-events: none;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.45),
+      transparent
+    );
+    transform: translateX(-120%);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+
+  .shine-card:hover::after {
+    transform: translateX(140%);
+    opacity: 1;
+  }
 }
