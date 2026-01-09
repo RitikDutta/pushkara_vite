@@ -13,11 +13,75 @@ const imageOptions = [
     name: "Reserve Pot",
     image: "/2x.png",
   },
+  {
+    id: "heritage",
+    name: "Heritage Pot",
+    image: "/3x.png",
+  },
 ];
 
 export default function Product() {
-  const [activeImage, setActiveImage] = useState(imageOptions[0]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(null);
+  const [direction, setDirection] = useState("next");
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const transitionTimeoutRef = useRef(null);
   const productRef = useRef(null);
+  const activeImage = imageOptions[activeIndex];
+
+  useEffect(() => {
+    return () => {
+      if (transitionTimeoutRef.current) {
+        window.clearTimeout(transitionTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const startImageTransition = (nextDirection) => {
+    if (isTransitioning) {
+      return;
+    }
+
+    setIsTransitioning(true);
+    setDirection(nextDirection);
+    setPrevIndex(activeIndex);
+
+    const nextIndex =
+      nextDirection === "next"
+        ? (activeIndex + 1) % imageOptions.length
+        : (activeIndex - 1 + imageOptions.length) % imageOptions.length;
+
+    setActiveIndex(nextIndex);
+
+    if (transitionTimeoutRef.current) {
+      window.clearTimeout(transitionTimeoutRef.current);
+    }
+
+    transitionTimeoutRef.current = window.setTimeout(() => {
+      setPrevIndex(null);
+      setIsTransitioning(false);
+    }, 520);
+  };
+
+  const handlePrevImage = () => {
+    startImageTransition("prev");
+  };
+
+  const handleNextImage = () => {
+    startImageTransition("next");
+  };
+
+  const slideInClass =
+    prevIndex === null
+      ? ""
+      : direction === "next"
+      ? "product-image-slide-in-right"
+      : "product-image-slide-in-left";
+
+  const slideOutClass =
+    direction === "next"
+      ? "product-image-slide-out-left"
+      : "product-image-slide-out-right";
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -125,39 +189,61 @@ export default function Product() {
           </div>
 
           <div className="product-visual flex flex-col items-center gap-6 lg:items-end">
-            <div className="relative flex w-full items-center justify-center">
+            <div className="product-image-stage">
+              <button
+                type="button"
+                onClick={handlePrevImage}
+                className="product-image-nav product-image-nav--left"
+                aria-label="Previous product image"
+                disabled={isTransitioning}
+              >
+                <ArrowIcon direction="left" />
+              </button>
               <div className="product-image-glow" />
               <div className="product-image-base" />
-              <img
-                src={activeImage.image}
-                alt={activeImage.name}
-                className="product-image w-full max-w-[520px] animate-float object-contain"
-                loading="lazy"
-              />
-              <img
-                src={activeImage.image}
-                alt=""
-                aria-hidden="true"
-                className="product-image-reflection w-full max-w-[520px] object-contain"
-              />
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3 lg:justify-end">
-              {imageOptions.map((option) => {
-                const isActive = option.id === activeImage.id;
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => setActiveImage(option)}
-                    className={`choice-pill rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] ${
-                      isActive ? "is-active" : ""
-                    }`}
-                  >
-                    {option.name}
-                  </button>
-                );
-              })}
+              {prevIndex !== null && (
+                <div className={`product-image-slide ${slideOutClass}`}>
+                  <div className="product-image-stack">
+                    <img
+                      src={imageOptions[prevIndex].image}
+                      alt=""
+                      aria-hidden="true"
+                      className="product-image object-contain"
+                    />
+                    <img
+                      src={imageOptions[prevIndex].image}
+                      alt=""
+                      aria-hidden="true"
+                      className="product-image-reflection object-contain"
+                    />
+                  </div>
+                </div>
+              )}
+              <div className={`product-image-slide ${slideInClass}`}>
+                <div className="product-image-stack animate-float">
+                  <img
+                    src={activeImage.image}
+                    alt={activeImage.name}
+                    className="product-image object-contain"
+                    loading="lazy"
+                  />
+                  <img
+                    src={activeImage.image}
+                    alt=""
+                    aria-hidden="true"
+                    className="product-image-reflection object-contain"
+                  />
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={handleNextImage}
+                className="product-image-nav product-image-nav--right"
+                aria-label="Next product image"
+                disabled={isTransitioning}
+              >
+                <ArrowIcon direction="right" />
+              </button>
             </div>
           </div>
         </section>
@@ -233,6 +319,25 @@ function SparkleIcon({ className = "" }) {
     >
       <path d="M60 16l8 20 20 8-20 8-8 20-8-20-20-8 20-8 8-20Z" />
       <path d="M92 72l4 10 10 4-10 4-4 10-4-10-10-4 10-4 4-10Z" />
+    </svg>
+  );
+}
+
+function ArrowIcon({ direction = "right" }) {
+  const isLeft = direction === "left";
+  return (
+    <svg
+      className={`h-4 w-4 ${isLeft ? "rotate-180" : ""}`}
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M4 10h12" />
+      <path d="m11 5 5 5-5 5" />
     </svg>
   );
 }
