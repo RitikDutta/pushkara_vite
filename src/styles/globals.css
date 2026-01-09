@@ -691,6 +691,8 @@ body,
       rgba(255, 255, 255, 0.12) 45%,
       transparent 70%
     );
+    transform: translate(-50%, -50%) scale(0.35);
+    opacity: 0;
     animation: story-ripple 0.85s ease-out;
     pointer-events: none;
     mix-blend-mode: screen;
