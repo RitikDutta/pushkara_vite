@@ -2,6 +2,8 @@ import React from "react";
 
 const heroBg = "/hero_bg.png";
 const heroImage = "/hero_image.png";
+const secondBanner = "/second_banner.png";
+const thirdBanner = "/third_banner.png";
 
 export default function Hero() {
   return (
@@ -51,7 +53,10 @@ export default function Hero() {
           </div>
 
           <div className="grid h-full grid-cols-2 gap-4 md:col-span-1 md:row-span-2 md:h-full md:grid-cols-1 md:grid-rows-2">
-            <div className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] shadow-lg shadow-emerald-50/60">
+            <div
+              className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-cover bg-center shadow-lg shadow-emerald-50/60"
+              style={{ backgroundImage: `url(${secondBanner})` }}
+            >
               <div className="absolute -right-10 top-6 h-20 w-20 rotate-6 rounded-3xl bg-white/70 shadow-inner shadow-emerald-100" />
 
               <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
@@ -68,7 +73,10 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] shadow-lg shadow-amber-50/60">
+            <div
+              className="relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-cover bg-center shadow-lg shadow-amber-50/60"
+              style={{ backgroundImage: `url(${thirdBanner})` }}
+            >
               <div className="absolute -left-8 bottom-6 h-16 w-16 rotate-3 rounded-3xl bg-white/70 shadow-inner shadow-amber-100" />
 
               <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
