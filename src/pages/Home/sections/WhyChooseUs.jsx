@@ -5,17 +5,17 @@ const whyUsImage = "/why_us.png";
 const leftFeatures = [
   {
     title: "Commitment to 100% Natural",
-    text: "We provide dairy that's completely free from additives and fillers.",
+    text: "Dairy that's completely free from additives and fillers.",
     icon: LeafIcon,
   },
   {
     title: "Farm-Fresh Milk Every Day",
-    text: "Collected daily from local farms for peak freshness and taste.",
+    text: "Collected daily from local farms for peak freshness.",
     icon: GridIcon,
   },
   {
     title: "Pure, Natural, No Chemicals",
-    text: "Clean ingredients with no artificial flavors or preservatives.",
+    text: "Clean ingredients with no artificial flavors.",
     icon: DropIcon,
   },
 ];
@@ -23,17 +23,17 @@ const leftFeatures = [
 const rightFeatures = [
   {
     title: "Rigorous Quality Control",
-    text: "Every batch is tested for purity and consistency before delivery.",
+    text: "Every batch is tested for purity and consistency.",
     icon: ClipboardIcon,
   },
   {
     title: "Eco-Friendly Farming Practices",
-    text: "We support sustainable, animal-first farming standards.",
+    text: "Sustainable, animal-first farming standards.",
     icon: PlantIcon,
   },
   {
     title: "Trusted By Thousands Daily",
-    text: "Families count on our dairy for healthy, wholesome nutrition.",
+    text: "Families count on our dairy for wholesome nutrition.",
     icon: MedalIcon,
   },
 ];
@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
   return (
     <section className="why-us-section relative overflow-hidden">
       <div className="why-us-texture" />
-      <div className="relative mx-auto max-w-6xl px-4 pt-14 sm:pt-16 lg:pt-20 pb-0">
+      <div className="relative mx-auto max-w-[1480px] px-4 pt-14 sm:pt-16 lg:pt-20 pb-0">
         <div className="flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase text-[#7a521e]">
             <SparkIcon className="h-4 w-4 text-[#f6c244]" />
@@ -54,8 +54,8 @@ export default function WhyChooseUs() {
           </h2>
         </div>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch">
-          <div className="space-y-8 pb-10 sm:pb-12 lg:pb-14">
+        <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1.6fr)_auto_minmax(0,1.6fr)] lg:items-stretch">
+          <div className="space-y-10 pb-12 sm:pb-14 lg:pb-16">
             {leftFeatures.map((feature) => (
               <FeatureItem key={feature.title} {...feature} />
             ))}
@@ -66,12 +66,12 @@ export default function WhyChooseUs() {
             <img
               src={whyUsImage}
               alt="Fresh dairy illustration"
-              className="relative z-10 w-[260px] object-contain sm:w-[330px] lg:w-[380px]"
+              className="relative z-10 w-[300px] object-contain sm:w-[380px] lg:w-[460px]"
               loading="lazy"
             />
           </div>
 
-          <div className="space-y-8 pb-10 sm:pb-12 lg:pb-14">
+          <div className="space-y-10 pb-12 sm:pb-14 lg:pb-16">
             {rightFeatures.map((feature) => (
               <FeatureItem key={feature.title} {...feature} />
             ))}
@@ -87,15 +87,15 @@ export default function WhyChooseUs() {
 
 function FeatureItem({ icon: Icon, title, text }) {
   return (
-    <div className="flex items-start gap-4">
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f6c244] text-[#4b2e18] shadow-[0_12px_20px_rgba(246,196,68,0.3)]">
+    <div className="flex items-start gap-5">
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f6c244] text-[#4b2e18] shadow-[0_12px_20px_rgba(246,196,68,0.3)]">
         <Icon className="h-5 w-5" />
       </span>
-      <div className="space-y-1">
-        <h3 className="text-base font-semibold text-[#4b2e18] sm:text-lg">
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold text-[#4b2e18] sm:text-xl lg:whitespace-nowrap">
           {title}
         </h3>
-        <p className="text-sm text-[#7a521e]">{text}</p>
+        <p className="text-base text-[#7a521e] lg:whitespace-nowrap">{text}</p>
       </div>
     </div>
   );
