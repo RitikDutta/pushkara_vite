@@ -2,17 +2,31 @@ import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 bg-[#0fa58f] text-white shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
-      <div className="border-t-[3px] border-[#f6c244]">
-        <div className="mx-auto max-w-[1600px] px-4">
-          <div className="flex flex-col gap-3 py-3 lg:py-2">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/15 text-lg font-bold">
-                  P
+    <header className="sticky top-0 z-50 text-white shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
+      {/* <div className="marquee bg-[#f6c244] text-[11px] uppercase tracking-[0.25em] text-[#4b3307]">
+        <div className="marquee-track">
+          <span>Free delivery on orders over Rs 5,000</span>
+          <span>Fresh batch every week</span>
+          <span>Traditional bilona method</span>
+          <span>Lab-tested purity</span>
+          <span>Free delivery on orders over Rs 5,000</span>
+          <span>Fresh batch every week</span>
+          <span>Traditional bilona method</span>
+          <span>Lab-tested purity</span>
+        </div>
+      </div> */}
+
+      <div className="bg-[#0fa58f]">
+        <div className="border-t-[3px] border-[#f6c244]">
+          <div className="mx-auto max-w-[1600px] px-4">
+            <div className="flex flex-col gap-3 py-3 lg:py-2">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/15 text-lg font-bold">
+                    P
+                  </div>
+                  <span className="text-2xl font-semibold tracking-tight">Pushkara</span>
                 </div>
-                <span className="text-2xl font-semibold tracking-tight">Pushkara</span>
-              </div>
 
               <nav className="hidden lg:flex flex-1 items-center justify-center gap-5 text-sm font-medium text-white/90">
                 <NavLink to="/" className="transition hover:text-white">
@@ -59,55 +73,56 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <button className="ml-auto inline-flex items-center justify-center rounded-lg border border-white/20 p-2 text-white/90 transition hover:bg-white/10 lg:hidden">
-                <MenuIcon />
-              </button>
-            </div>
-
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-4">
-              <button className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-xs font-semibold text-[#0f8a78] shadow-sm">
-                <MenuIcon />
-                All Categories
-                <ChevronDownIcon />
-              </button>
-
-              <div className="flex w-full flex-1 items-stretch overflow-hidden rounded-xl bg-white text-slate-800 shadow-sm">
-                <button className="hidden items-center gap-1 border-r border-slate-200 px-3 text-xs font-semibold text-slate-600 sm:flex">
-                  All Categories
-                  <ChevronDownIcon className="text-slate-500" />
-                </button>
-                <input
-                  type="text"
-                  placeholder="Type your products..."
-                  className="w-full flex-1 px-3 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none"
-                />
-                <button className="inline-flex items-center gap-2 bg-[#f6c244] px-4 text-sm font-semibold text-[#4b3307]">
-                  Search
-                  <SearchIcon />
+                <button className="ml-auto inline-flex items-center justify-center rounded-lg border border-white/20 p-2 text-white/90 transition hover:bg-white/10 lg:hidden">
+                  <MenuIcon />
                 </button>
               </div>
 
-              <div className="flex items-center justify-between gap-4 lg:ml-auto">
-                <button className="hidden items-center gap-2 text-sm font-medium text-white/90 transition hover:text-white sm:flex">
-                  <UserIcon />
-                  Accounts
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-4">
+                <button className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-xs font-semibold text-[#0f8a78] shadow-sm">
+                  <MenuIcon />
+                  All Categories
+                  <ChevronDownIcon />
                 </button>
-                <div className="flex items-center gap-3">
-                  <button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/90 transition hover:bg-white/10">
-                    <HeartIcon />
-                    <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
-                      0
-                    </span>
+
+                <div className="flex w-full flex-1 items-stretch overflow-hidden rounded-xl bg-white text-slate-800 shadow-sm">
+                  <button className="hidden items-center gap-1 border-r border-slate-200 px-3 text-xs font-semibold text-slate-600 sm:flex">
+                    All Categories
+                    <ChevronDownIcon className="text-slate-500" />
                   </button>
-                  <button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/90 transition hover:bg-white/10">
-                    <CartIcon />
-                    <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
-                      0
-                    </span>
+                  <input
+                    type="text"
+                    placeholder="Type your products..."
+                    className="w-full flex-1 px-3 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none"
+                  />
+                  <button className="inline-flex items-center gap-2 bg-[#f6c244] px-4 text-sm font-semibold text-[#4b3307]">
+                    Search
+                    <SearchIcon />
                   </button>
-                  <button className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/90 transition hover:bg-white/10 lg:hidden">
-                    <MenuIcon />
+                </div>
+
+                <div className="flex items-center justify-between gap-4 lg:ml-auto">
+                  <button className="hidden items-center gap-2 text-sm font-medium text-white/90 transition hover:text-white sm:flex">
+                    <UserIcon />
+                    Accounts
                   </button>
+                  <div className="flex items-center gap-3">
+                    <button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/90 transition hover:bg-white/10">
+                      <HeartIcon />
+                      <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
+                        0
+                      </span>
+                    </button>
+                    <button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/90 transition hover:bg-white/10">
+                      <CartIcon />
+                      <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
+                        0
+                      </span>
+                    </button>
+                    <button className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/90 transition hover:bg-white/10 lg:hidden">
+                      <MenuIcon />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

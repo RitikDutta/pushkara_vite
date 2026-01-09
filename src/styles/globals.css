@@ -39,6 +39,31 @@ body,
     animation: fade-in 0.6s ease-out both;
   }
 
+  .marquee {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 18s linear infinite;
+  }
+
+  .marquee-track > span {
+    white-space: nowrap;
+    padding-right: 2.5rem;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   .shine-card {
     position: relative;
     overflow: hidden;
