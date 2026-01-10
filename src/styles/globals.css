@@ -571,11 +571,20 @@ body,
 
   .our-story-section {
     position: relative;
+    background-color: #2b170e;
+    color: #fef3e2;
+    font-family: "Alegreya Sans", "Trebuchet MS", sans-serif;
+  }
+
+  .our-story-bg {
+    position: absolute;
+    inset: -12% 0;
     background-image: url("/our_story_bg.png");
     background-size: cover;
     background-position: center;
-    color: #fef3e2;
-    font-family: "Alegreya Sans", "Trebuchet MS", sans-serif;
+    transform: translate3d(0, var(--story-parallax, 0px), 0) scale(1.1);
+    will-change: transform;
+    z-index: 0;
   }
 
   .our-story-overlay {
@@ -609,6 +618,12 @@ body,
     background-size: 3px 3px;
     opacity: 0.2;
     mix-blend-mode: screen;
+  }
+
+  .our-story-overlay,
+  .our-story-vignette,
+  .our-story-dots {
+    z-index: 1;
   }
 
   .our-story-title {

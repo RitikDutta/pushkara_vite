@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const highlights = [
   {
@@ -22,6 +24,7 @@ export default function OurStory() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [rippleKey, setRippleKey] = useState(0);
   const openTimerRef = useRef(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     return () => {
@@ -29,6 +32,88 @@ export default function OurStory() {
         clearTimeout(openTimerRef.current);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    let rafId = null;
+    const updateParallax = () => {
+      const rect = section.getBoundingClientRect();
+      const offset = rect.top * 0.18;
+      section.style.setProperty("--story-parallax", `${offset}px`);
+      rafId = null;
+    };
+
+    const handleScroll = () => {
+      if (rafId) {
+        return;
+      }
+      rafId = window.requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.from(".our-story-heading > *", {
+        opacity: 0,
+        y: 28,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: ".our-story-heading",
+          start: "top 75%",
+        },
+      });
+
+      gsap.from(".our-story-play", {
+        opacity: 0,
+        scale: 0.85,
+        duration: 0.9,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".our-story-play",
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".our-story-feature", {
+        opacity: 0,
+        y: 20,
+        duration: 0.9,
+        ease: "power2.out",
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: ".our-story-features",
+          start: "top 80%",
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   useEffect(() => {
@@ -69,13 +154,14 @@ export default function OurStory() {
   };
 
   return (
-    <section className="our-story-section relative overflow-hidden">
+    <section ref={sectionRef} className="our-story-section relative overflow-hidden">
+      <div className="our-story-bg" aria-hidden="true" />
       <div className="our-story-overlay" />
       <div className="our-story-vignette" />
       <div className="our-story-dots" />
-      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24">
         <div className="flex min-h-[520px] flex-col sm:min-h-[560px]">
-          <div className="flex flex-1 flex-col items-center justify-center text-center">
+          <div className="our-story-heading flex flex-1 flex-col items-center justify-center text-center">
             <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase text-[#f6c244]">
               <SparkIcon className="h-4 w-4 text-[#f6c244]" />
               <span className="our-story-eyebrow">Our Story</span>
@@ -101,9 +187,12 @@ export default function OurStory() {
           </div>
 
           <div className="w-full border-t border-white/15 pt-8">
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="our-story-features grid gap-8 md:grid-cols-3">
               {highlights.map((item) => (
-                <div key={item.title} className="flex items-start gap-4 text-left">
+                <div
+                  key={item.title}
+                  className="our-story-feature flex items-start gap-4 text-left"
+                >
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f6c244] text-[#4b2e18] shadow-[0_12px_20px_rgba(246,196,68,0.25)]">
                     <item.icon className="h-5 w-5" />
                   </span>
