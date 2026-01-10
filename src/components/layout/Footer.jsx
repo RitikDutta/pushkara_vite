@@ -1,30 +1,30 @@
 export default function Footer() {
   return (
-    <footer className="mt-16 bg-[#3b2318] text-[#f3e7d7]">
-      <div className="mx-auto max-w-6xl px-4 py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.7fr_0.7fr_1fr]">
+    <footer className="mt-20 bg-[#3b2318] text-[#f3e7d7]">
+      <div className="mx-auto max-w-[1400px] px-6 py-16 lg:px-10 2xl:px-16 2xl:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.35fr_0.8fr_0.8fr_1.1fr] lg:gap-16 2xl:grid-cols-[1.5fr_0.9fr_0.9fr_1.15fr] 2xl:gap-20">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f6cf57] text-lg font-bold text-[#3b2318]">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#f6cf57] text-xl font-bold text-[#3b2318]">
                 P
               </div>
-              <div className="text-2xl font-semibold text-[#fef6e9]">pushkara</div>
+              <div className="text-3xl font-semibold text-[#fef6e9]">pushkara</div>
             </div>
 
-            <p className="max-w-md text-sm leading-relaxed text-[#e7d6c4]">
+            <p className="max-w-lg text-base leading-relaxed text-[#e7d6c4]">
               We are a family-run, sustainable dairy farm committed to delivering 100% fresh, pure,
               and hormone-free.
             </p>
 
             <div className="h-px w-full bg-white/10" />
 
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-8 sm:grid-cols-2">
               <div className="flex items-start gap-3">
                 <span className="mt-0.5 text-[#f6cf57]">
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 24 24"
-                    className="h-5 w-5"
+                    className="h-6 w-6"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.7"
@@ -35,8 +35,8 @@ export default function Footer() {
                   </svg>
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-[#fef6e9]">Phone Number</p>
-                  <p className="text-sm text-[#e7d6c4]">(+91) 254-882-963</p>
+                  <p className="text-base font-semibold text-[#fef6e9]">Phone Number</p>
+                  <p className="text-base text-[#e7d6c4]">(+91) 254-882-963</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -44,7 +44,7 @@ export default function Footer() {
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 24 24"
-                    className="h-5 w-5"
+                    className="h-6 w-6"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.7"
@@ -56,16 +56,16 @@ export default function Footer() {
                   </svg>
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-[#fef6e9]">Our Location</p>
-                  <p className="text-sm text-[#e7d6c4]">pushkara , pushkar ajmer rajasthan</p>
+                  <p className="text-base font-semibold text-[#fef6e9]">Our Location</p>
+                  <p className="text-base text-[#e7d6c4]">pushkara , pushkar ajmer rajasthan</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-base font-semibold text-[#fef6e9]">Quick Link</h3>
-            <ul className="mt-4 space-y-3 text-sm text-[#e7d6c4]">
+            <h3 className="text-lg font-semibold text-[#fef6e9]">Quick Link</h3>
+            <ul className="mt-5 space-y-3 text-base text-[#e7d6c4]">
               <li>
                 <a className="transition hover:text-white" href="#">
                   Home
@@ -90,8 +90,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-base font-semibold text-[#fef6e9]">Careers</h3>
-            <ul className="mt-4 space-y-3 text-sm text-[#e7d6c4]">
+            <h3 className="text-lg font-semibold text-[#fef6e9]">Careers</h3>
+            <ul className="mt-5 space-y-3 text-base text-[#e7d6c4]">
               <li>
                 <a className="transition hover:text-white" href="#">
                   Delivery & Logistics
@@ -115,22 +115,22 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-6">
             <div>
-              <h3 className="text-base font-semibold text-[#fef6e9]">Our Newsletter</h3>
-              <p className="mt-3 text-sm text-[#e7d6c4]">
+              <h3 className="text-lg font-semibold text-[#fef6e9]">Our Newsletter</h3>
+              <p className="mt-3 text-base text-[#e7d6c4]">
                 Join our newsletter and be the first to know about:
               </p>
             </div>
             <form className="space-y-4">
               <div className="flex items-center overflow-hidden rounded-full border border-white/10 bg-white/5">
                 <input
-                  className="w-full bg-transparent px-4 py-2.5 text-sm text-[#fef6e9] placeholder:text-[#d7c4b2] focus:outline-none"
+                  className="w-full bg-transparent px-5 py-3 text-base text-[#fef6e9] placeholder:text-[#d7c4b2] focus:outline-none"
                   placeholder="Email Address *"
                   type="email"
                 />
                 <button
-                  className="flex h-11 w-11 items-center justify-center bg-[#f6cf57] text-[#3b2318] transition hover:brightness-95"
+                  className="flex h-12 w-12 items-center justify-center bg-[#f6cf57] text-[#3b2318] transition hover:brightness-95"
                   type="submit"
                   aria-label="Subscribe"
                 >
@@ -150,12 +150,12 @@ export default function Footer() {
                 </button>
               </div>
             </form>
-            <div className="flex items-center gap-3 text-sm text-[#e7d6c4]">
+            <div className="flex items-center gap-3 text-base text-[#e7d6c4]">
               <span className="text-[#f6cf57]">
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 24 24"
-                  className="h-5 w-5"
+                  className="h-6 w-6"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.7"
@@ -171,18 +171,18 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 border-t border-white/10 pt-6 text-sm text-[#e7d6c4] md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 flex flex-col gap-6 border-t border-white/10 pt-7 text-base text-[#e7d6c4] md:flex-row md:items-center md:justify-between">
           <p>Copyright © {new Date().getFullYear()} All Rights Reserved.</p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <a
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-[#fef6e9] transition hover:border-[#f6cf57] hover:text-[#f6cf57]"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-[#fef6e9] transition hover:border-[#f6cf57] hover:text-[#f6cf57]"
               href="#"
               aria-label="Instagram"
             >
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
-                className="h-4 w-4"
+                className="h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.7"
@@ -195,14 +195,14 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-[#fef6e9] transition hover:border-[#f6cf57] hover:text-[#f6cf57]"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-[#fef6e9] transition hover:border-[#f6cf57] hover:text-[#f6cf57]"
               href="#"
               aria-label="Facebook"
             >
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
-                className="h-4 w-4"
+                className="h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.7"
@@ -216,14 +216,14 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-[#fef6e9] transition hover:border-[#f6cf57] hover:text-[#f6cf57]"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-[#fef6e9] transition hover:border-[#f6cf57] hover:text-[#f6cf57]"
               href="#"
               aria-label="X"
             >
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
-                className="h-4 w-4"
+                className="h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.7"
@@ -235,14 +235,14 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-[#fef6e9] transition hover:border-[#f6cf57] hover:text-[#f6cf57]"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-[#fef6e9] transition hover:border-[#f6cf57] hover:text-[#f6cf57]"
               href="#"
               aria-label="Pinterest"
             >
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
-                className="h-4 w-4"
+                className="h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.7"
