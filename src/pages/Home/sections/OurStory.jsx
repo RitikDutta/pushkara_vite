@@ -43,7 +43,7 @@ export default function OurStory() {
     let rafId = null;
     const updateParallax = () => {
       const rect = section.getBoundingClientRect();
-      const offset = rect.top * 0.18;
+      const offset = rect.top * - 0.38;
       section.style.setProperty("--story-parallax", `${offset}px`);
       rafId = null;
     };
