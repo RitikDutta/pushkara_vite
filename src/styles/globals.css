@@ -587,6 +587,17 @@ body,
     z-index: 0;
   }
 
+  .our-story-top-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(14, 8, 4, 0.65), rgba(14, 8, 4, 0));
+    z-index: 2;
+  }
+
   .our-story-overlay {
     position: absolute;
     inset: 0;

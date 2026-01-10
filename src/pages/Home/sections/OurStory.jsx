@@ -156,6 +156,7 @@ export default function OurStory() {
   return (
     <section ref={sectionRef} className="our-story-section relative overflow-hidden">
       <div className="our-story-bg" aria-hidden="true" />
+      <div className="our-story-top-shadow" aria-hidden="true" />
       <div className="our-story-overlay" />
       <div className="our-story-vignette" />
       <div className="our-story-dots" />
