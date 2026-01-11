@@ -6,17 +6,14 @@ const leftBenefits = [
   {
     title: "Heart Health",
     text: "Supports a healthy cardiovascular system.",
-    icon: HeartIcon,
   },
   {
     title: "Anti-Aging & Anti-Inflammatory",
     text: "Helps slow the aging process and supports natural recovery.",
-    icon: HourglassIcon,
   },
   {
     title: "Glowing Skin & Hair",
     text: "Nourishes skin and strengthens hair for a natural glow.",
-    icon: LeafIcon,
   },
 ];
 
@@ -24,18 +21,24 @@ const rightBenefits = [
   {
     title: "Strong Bones & Joints",
     text: "Helps build strong bones and supports healthy joints.",
-    icon: BoneIcon,
   },
   {
     title: "Brain & Digestion",
     text: "Aids brain health and supports a healthy digestive system.",
-    icon: BrainIcon,
   },
+];
+
+const orbitIcons = [
+  { src: "/heart.png", className: "benefits-orbit-icon--1" },
+  { src: "/hour_glass.png", className: "benefits-orbit-icon--2" },
+  { src: "/leaf.png", className: "benefits-orbit-icon--3" },
+  { src: "/bones.png", className: "benefits-orbit-icon--4" },
+  { src: "/brain.png", className: "benefits-orbit-icon--5" },
 ];
 
 export default function Benefits() {
   const sectionRef = useRef(null);
-  const imageRef = useRef(null);
+  const maskRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -82,9 +85,9 @@ export default function Benefits() {
 
   useEffect(() => {
     const section = sectionRef.current;
-    const image = imageRef.current;
+    const mask = maskRef.current;
 
-    if (!section || !image) {
+    if (!section || !mask) {
       return;
     }
 
@@ -97,8 +100,8 @@ export default function Benefits() {
     const animate = () => {
       currentX += (targetX - currentX) * 0.06;
       currentY += (targetY - currentY) * 0.06;
-      image.style.setProperty("--benefits-mask-x", `${currentX}%`);
-      image.style.setProperty("--benefits-mask-y", `${currentY}%`);
+      mask.style.setProperty("--benefits-mask-x", `${currentX}%`);
+      mask.style.setProperty("--benefits-mask-y", `${currentY}%`);
 
       if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
         rafId = window.requestAnimationFrame(animate);
@@ -110,7 +113,7 @@ export default function Benefits() {
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
     const handleMove = (event) => {
-      const rect = image.getBoundingClientRect();
+      const rect = mask.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
       const dx = event.clientX - centerX;
@@ -142,8 +145,8 @@ export default function Benefits() {
       }
     };
 
-    image.style.setProperty("--benefits-mask-x", "50%");
-    image.style.setProperty("--benefits-mask-y", "50%");
+    mask.style.setProperty("--benefits-mask-x", "50%");
+    mask.style.setProperty("--benefits-mask-y", "50%");
 
     section.addEventListener("mousemove", handleMove);
     section.addEventListener("mouseleave", handleLeave);
@@ -182,8 +185,17 @@ export default function Benefits() {
             <div className="benefits-image-glow" aria-hidden="true" />
             <div className="benefits-orbit" aria-hidden="true" />
             <div className="benefits-orbit benefits-orbit--inner" aria-hidden="true" />
-            <div className="benefits-image-frame">
-              <div ref={imageRef} className="benefits-image" aria-hidden="true" />
+            <div className="benefits-orbit-icons" aria-hidden="true">
+              {orbitIcons.map((icon) => (
+                <span
+                  key={icon.src}
+                  className={`benefits-orbit-icon ${icon.className}`}
+                  style={{ backgroundImage: `url(${icon.src})` }}
+                />
+              ))}
+            </div>
+            <div ref={maskRef} className="benefits-image-frame">
+              <div className="benefits-image" aria-hidden="true" />
             </div>
           </div>
 
@@ -198,20 +210,17 @@ export default function Benefits() {
   );
 }
 
-function BenefitItem({ icon: Icon, title, text, side }) {
+function BenefitItem({ title, text, side }) {
   const isLeft = side === "left";
 
   return (
     <div
-      className={`benefits-item flex flex-col items-center gap-3 text-center lg:flex-row lg:gap-4 ${
+      className={`benefits-item flex flex-col items-center gap-2 text-center ${
         isLeft
-          ? "lg:flex-row-reverse lg:items-end lg:justify-end lg:text-right"
+          ? "lg:items-end lg:text-right"
           : "lg:items-start lg:text-left"
       }`}
     >
-      <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d8b47a] text-[#b5854f] shadow-[0_10px_18px_rgba(181,133,79,0.2)]">
-        <Icon className="h-5 w-5" />
-      </span>
       <div className="space-y-1 lg:max-w-[300px] xl:max-w-[340px]">
         <h3 className="text-base font-semibold text-[#4b2e18] sm:text-lg">{title}</h3>
         <p className="text-sm text-[#7a521e] sm:text-[15px]">{text}</p>
@@ -231,100 +240,6 @@ function SparkIcon({ className = "" }) {
       aria-hidden="true"
     >
       <path d="M12 3.5l2.2 5.2 5.3 2.2-5.3 2.2L12 18.3l-2.2-5.2-5.3-2.2 5.3-2.2L12 3.5Z" />
-    </svg>
-  );
-}
-
-function HeartIcon({ className = "" }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M12 20s-6.5-4.4-6.5-10a4 4 0 0 1 6.5-3 4 4 0 0 1 6.5 3c0 5.6-6.5 10-6.5 10Z" />
-    </svg>
-  );
-}
-
-function HourglassIcon({ className = "" }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M7 4h10" />
-      <path d="M7 20h10" />
-      <path d="M9 4c0 4 6 4 6 8s-6 4-6 8" />
-    </svg>
-  );
-}
-
-function BoneIcon({ className = "" }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <circle cx="6.5" cy="12" r="2.5" />
-      <circle cx="17.5" cy="12" r="2.5" />
-      <path d="M9.2 12h5.6" />
-    </svg>
-  );
-}
-
-function BrainIcon({ className = "" }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M9 6a3 3 0 0 0-3 3v1a2.5 2.5 0 0 0-2 2.5V14a3 3 0 0 0 3 3h2" />
-      <path d="M15 6a3 3 0 0 1 3 3v1a2.5 2.5 0 0 1 2 2.5V14a3 3 0 0 1-3 3h-2" />
-      <path d="M12 6V5a3 3 0 0 0-3 3" />
-      <path d="M12 6V5a3 3 0 0 1 3 3" />
-      <path d="M10 12h4" />
-    </svg>
-  );
-}
-
-function LeafIcon({ className = "" }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M5 14c7-8 13-7 14-7 0 1 1 7-7 14-3 1-6-1-7-4Z" />
-      <path d="M8 15c2.5-2.5 5-4 8-5" />
     </svg>
   );
 }

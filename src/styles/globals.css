@@ -97,6 +97,19 @@ body,
     }
   }
 
+  @keyframes benefits-orbit-spin {
+    from {
+      transform: translate(-50%, -50%) rotate(var(--orbit-angle))
+        translateY(calc(-1 * var(--benefits-orbit-radius)))
+        rotate(calc(-1 * var(--orbit-angle)));
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(calc(360deg + var(--orbit-angle)))
+        translateY(calc(-1 * var(--benefits-orbit-radius)))
+        rotate(calc(-360deg - var(--orbit-angle)));
+    }
+  }
+
   @keyframes float-soft {
     0%,
     100% {
@@ -875,6 +888,12 @@ body,
     letter-spacing: 0.35em;
   }
 
+  .benefits-center {
+    --benefits-orbit-size: clamp(320px, 40vw, 520px);
+    --benefits-orbit-inner-size: clamp(270px, 32vw, 440px);
+    --benefits-icon-size: clamp(36px, 4vw, 56px);
+  }
+
   .benefits-image-glow {
     position: absolute;
     width: clamp(280px, 36vw, 520px);
@@ -884,25 +903,77 @@ body,
     opacity: 0.8;
     filter: blur(12px);
     pointer-events: none;
+    z-index: 0;
   }
 
   .benefits-orbit {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: clamp(320px, 40vw, 520px);
+    width: var(--benefits-orbit-size);
     aspect-ratio: 1;
     border-radius: 999px;
     border: 1px dashed rgba(179, 132, 72, 0.55);
     opacity: 0.6;
     transform: translate(-50%, -50%);
     pointer-events: none;
+    z-index: 1;
   }
 
   .benefits-orbit--inner {
-    width: clamp(270px, 32vw, 440px);
+    width: var(--benefits-orbit-inner-size);
     border-style: dotted;
     opacity: 0.45;
+  }
+
+  .benefits-orbit-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--benefits-orbit-size);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+    --benefits-orbit-radius: calc(
+      (var(--benefits-orbit-size) - var(--benefits-icon-size)) / 2
+    );
+  }
+
+  .benefits-orbit-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--benefits-icon-size);
+    height: var(--benefits-icon-size);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%) rotate(var(--orbit-angle))
+      translateY(calc(-1 * var(--benefits-orbit-radius)))
+      rotate(calc(-1 * var(--orbit-angle)));
+    animation: benefits-orbit-spin 28s linear infinite;
+    filter: drop-shadow(0 6px 12px rgba(116, 76, 36, 0.35));
+  }
+
+  .benefits-orbit-icon--1 {
+    --orbit-angle: 0deg;
+  }
+
+  .benefits-orbit-icon--2 {
+    --orbit-angle: 72deg;
+  }
+
+  .benefits-orbit-icon--3 {
+    --orbit-angle: 144deg;
+  }
+
+  .benefits-orbit-icon--4 {
+    --orbit-angle: 216deg;
+  }
+
+  .benefits-orbit-icon--5 {
+    --orbit-angle: 288deg;
   }
 
   .benefits-image-frame {
@@ -918,6 +989,7 @@ body,
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 3;
   }
 
   .benefits-image {
