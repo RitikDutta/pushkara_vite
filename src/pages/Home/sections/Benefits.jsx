@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -39,6 +39,7 @@ const orbitIcons = [
 export default function Benefits() {
   const sectionRef = useRef(null);
   const maskRef = useRef(null);
+  const [isCenterHovered, setIsCenterHovered] = useState(false);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -161,7 +162,12 @@ export default function Benefits() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="benefits-section relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      className={`benefits-section relative overflow-hidden${
+        isCenterHovered ? " benefits-section--hovered" : ""
+      }`}
+    >
       <div className="benefits-texture" aria-hidden="true" />
       <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24 xl:max-w-[1400px]">
         <div className="benefits-heading flex flex-col items-center text-center">
@@ -176,12 +182,16 @@ export default function Benefits() {
 
         <div className="benefits-grid mt-12 flex flex-col items-center gap-12 sm:mt-14 lg:mt-16 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-16 xl:gap-20">
           <div className="order-2 space-y-10 lg:order-none lg:space-y-12 xl:space-y-14">
-            {leftBenefits.map((benefit) => (
-              <BenefitItem key={benefit.title} side="left" {...benefit} />
+            {leftBenefits.map((benefit, index) => (
+              <BenefitItem key={benefit.title} side="left" index={index} {...benefit} />
             ))}
           </div>
 
-          <div className="benefits-center order-1 relative flex items-center justify-center py-6 sm:py-10 lg:order-none lg:py-0">
+          <div
+            className="benefits-center order-1 relative flex items-center justify-center py-6 sm:py-10 lg:order-none lg:py-0"
+            onMouseEnter={() => setIsCenterHovered(true)}
+            onMouseLeave={() => setIsCenterHovered(false)}
+          >
             <div className="benefits-image-glow" aria-hidden="true" />
             <div className="benefits-orbit" aria-hidden="true" />
             <div className="benefits-orbit benefits-orbit--inner" aria-hidden="true" />
@@ -200,8 +210,8 @@ export default function Benefits() {
           </div>
 
           <div className="order-3 space-y-10 lg:order-none lg:space-y-12 xl:space-y-14">
-            {rightBenefits.map((benefit) => (
-              <BenefitItem key={benefit.title} side="right" {...benefit} />
+            {rightBenefits.map((benefit, index) => (
+              <BenefitItem key={benefit.title} side="right" index={index} {...benefit} />
             ))}
           </div>
         </div>
@@ -210,8 +220,12 @@ export default function Benefits() {
   );
 }
 
-function BenefitItem({ title, text, side }) {
+function BenefitItem({ title, text, side, index }) {
   const isLeft = side === "left";
+  const shift = 14 + index * 6;
+  const float = index % 2 === 0 ? -6 : 6;
+  const delay = index * 70;
+  const shiftValue = isLeft ? -shift : shift;
 
   return (
     <div
@@ -220,8 +234,13 @@ function BenefitItem({ title, text, side }) {
           ? "lg:items-end lg:text-right"
           : "lg:items-start lg:text-left"
       }`}
+      style={{
+        "--benefits-shift": `${shiftValue}px`,
+        "--benefits-float": `${float}px`,
+        "--benefits-delay": `${delay}ms`,
+      }}
     >
-      <div className="space-y-1 lg:max-w-[300px] xl:max-w-[340px]">
+      <div className="benefits-item-body space-y-1 lg:max-w-[300px] xl:max-w-[340px]">
         <h3 className="text-base font-semibold text-[#4b2e18] sm:text-lg">{title}</h3>
         <p className="text-sm text-[#7a521e] sm:text-[15px]">{text}</p>
       </div>
