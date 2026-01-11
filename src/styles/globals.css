@@ -877,7 +877,7 @@ body,
 
   .benefits-image-glow {
     position: absolute;
-    width: clamp(260px, 40vw, 440px);
+    width: clamp(280px, 36vw, 520px);
     aspect-ratio: 1;
     border-radius: 999px;
     background: radial-gradient(circle, rgba(246, 196, 68, 0.25), transparent 65%);
@@ -890,7 +890,7 @@ body,
     position: absolute;
     top: 50%;
     left: 50%;
-    width: clamp(290px, 42vw, 470px);
+    width: clamp(320px, 40vw, 520px);
     aspect-ratio: 1;
     border-radius: 999px;
     border: 1px dashed rgba(179, 132, 72, 0.55);
@@ -900,14 +900,14 @@ body,
   }
 
   .benefits-orbit--inner {
-    width: clamp(240px, 34vw, 380px);
+    width: clamp(270px, 32vw, 440px);
     border-style: dotted;
     opacity: 0.45;
   }
 
   .benefits-image-frame {
     position: relative;
-    width: clamp(220px, 30vw, 320px);
+    width: clamp(240px, 28vw, 360px);
     aspect-ratio: 1;
     border-radius: 999px;
     padding: 10px;
@@ -928,12 +928,21 @@ body,
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    -webkit-mask-image: radial-gradient(circle at center, #000 62%, transparent 65%);
-    mask-image: radial-gradient(circle at center, #000 62%, transparent 65%);
+    -webkit-mask-image: radial-gradient(
+      circle at var(--benefits-mask-x, 50%) var(--benefits-mask-y, 50%),
+      #000 62%,
+      transparent 65%
+    );
+    mask-image: radial-gradient(
+      circle at var(--benefits-mask-x, 50%) var(--benefits-mask-y, 50%),
+      #000 62%,
+      transparent 65%
+    );
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+    will-change: mask-image;
   }
 
   @media (min-width: 640px) {

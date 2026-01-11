@@ -35,6 +35,7 @@ const rightBenefits = [
 
 export default function Benefits() {
   const sectionRef = useRef(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -79,10 +80,87 @@ export default function Benefits() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    const image = imageRef.current;
+
+    if (!section || !image) {
+      return;
+    }
+
+    let rafId = null;
+    let currentX = 50;
+    let currentY = 50;
+    let targetX = 50;
+    let targetY = 50;
+
+    const animate = () => {
+      currentX += (targetX - currentX) * 0.06;
+      currentY += (targetY - currentY) * 0.06;
+      image.style.setProperty("--benefits-mask-x", `${currentX}%`);
+      image.style.setProperty("--benefits-mask-y", `${currentY}%`);
+
+      if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+        rafId = window.requestAnimationFrame(animate);
+      } else {
+        rafId = null;
+      }
+    };
+
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    const handleMove = (event) => {
+      const rect = image.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const dx = event.clientX - centerX;
+      const dy = event.clientY - centerY;
+      const distance = Math.hypot(dx, dy);
+      const activationRadius = rect.width * 0.65;
+      const maxOffset = rect.width * 0.14;
+
+      if (distance <= activationRadius) {
+        const offsetX = clamp(dx, -maxOffset, maxOffset);
+        const offsetY = clamp(dy, -maxOffset, maxOffset);
+        targetX = 50 + (offsetX / rect.width) * 100;
+        targetY = 50 + (offsetY / rect.height) * 100;
+      } else {
+        targetX = 50;
+        targetY = 50;
+      }
+
+      if (!rafId) {
+        rafId = window.requestAnimationFrame(animate);
+      }
+    };
+
+    const handleLeave = () => {
+      targetX = 50;
+      targetY = 50;
+      if (!rafId) {
+        rafId = window.requestAnimationFrame(animate);
+      }
+    };
+
+    image.style.setProperty("--benefits-mask-x", "50%");
+    image.style.setProperty("--benefits-mask-y", "50%");
+
+    section.addEventListener("mousemove", handleMove);
+    section.addEventListener("mouseleave", handleLeave);
+
+    return () => {
+      section.removeEventListener("mousemove", handleMove);
+      section.removeEventListener("mouseleave", handleLeave);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, []);
+
   return (
     <section ref={sectionRef} className="benefits-section relative overflow-hidden">
       <div className="benefits-texture" aria-hidden="true" />
-      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24">
+      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24 xl:max-w-[1400px]">
         <div className="benefits-heading flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase text-[#8c5b24]">
             <SparkIcon className="h-4 w-4 text-[#c59243]" />
@@ -93,8 +171,8 @@ export default function Benefits() {
           </h2>
         </div>
 
-        <div className="benefits-grid mt-12 flex flex-col items-center gap-12 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center">
-          <div className="order-2 space-y-10 lg:order-none lg:space-y-12">
+        <div className="benefits-grid mt-12 flex flex-col items-center gap-12 sm:mt-14 lg:mt-16 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-16 xl:gap-20">
+          <div className="order-2 space-y-10 lg:order-none lg:space-y-12 xl:space-y-14">
             {leftBenefits.map((benefit) => (
               <BenefitItem key={benefit.title} side="left" {...benefit} />
             ))}
@@ -105,11 +183,11 @@ export default function Benefits() {
             <div className="benefits-orbit" aria-hidden="true" />
             <div className="benefits-orbit benefits-orbit--inner" aria-hidden="true" />
             <div className="benefits-image-frame">
-              <div className="benefits-image" aria-hidden="true" />
+              <div ref={imageRef} className="benefits-image" aria-hidden="true" />
             </div>
           </div>
 
-          <div className="order-3 space-y-10 lg:order-none lg:space-y-12">
+          <div className="order-3 space-y-10 lg:order-none lg:space-y-12 xl:space-y-14">
             {rightBenefits.map((benefit) => (
               <BenefitItem key={benefit.title} side="right" {...benefit} />
             ))}
@@ -125,7 +203,7 @@ function BenefitItem({ icon: Icon, title, text, side }) {
 
   return (
     <div
-      className={`benefits-item flex flex-col items-center gap-3 text-center lg:flex-row ${
+      className={`benefits-item flex flex-col items-center gap-3 text-center lg:flex-row lg:gap-4 ${
         isLeft
           ? "lg:flex-row-reverse lg:items-end lg:justify-end lg:text-right"
           : "lg:items-start lg:text-left"
@@ -134,7 +212,7 @@ function BenefitItem({ icon: Icon, title, text, side }) {
       <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d8b47a] text-[#b5854f] shadow-[0_10px_18px_rgba(181,133,79,0.2)]">
         <Icon className="h-5 w-5" />
       </span>
-      <div className="space-y-1 lg:max-w-[260px]">
+      <div className="space-y-1 lg:max-w-[300px] xl:max-w-[340px]">
         <h3 className="text-base font-semibold text-[#4b2e18] sm:text-lg">{title}</h3>
         <p className="text-sm text-[#7a521e] sm:text-[15px]">{text}</p>
       </div>
