@@ -37,13 +37,13 @@ export default function Hero() {
                   </div>
 
                   <h1 className="text-3xl font-bold leading-tight text-[#7a521e] sm:text-4xl md:text-[40px] md:leading-[1.1] max-[487px]:text-[22px] max-[487px]:leading-[1.2]">
-                    Fresh food, fair prices,
-                    <span className="block text-[#7a521e]">fast delivery.</span>
+                    Pure ghee, rich aroma,
+                    <span className="block text-[#7a521e]">slow-cooked goodness.</span>
                   </h1>
 
                   <p className="text-sm text-[#7a521e] sm:text-base max-[487px]:text-[13px]">
-                    Fresh veggies full of vitamins for your health. Quality produce delivered
-                    right to you.
+                    Traditionally clarified for a nutty flavor and golden glow. Wholesome ghee
+                    made from fresh milk, delivered to you.
                   </p>
 
                   <button className="mt-2 w-fit rounded-xl bg-[#ff5c5c] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:translate-y-[1px] hover:shadow max-[487px]:px-4 max-[487px]:py-2.5 max-[487px]:text-[12px]">
