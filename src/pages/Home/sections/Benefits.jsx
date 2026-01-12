@@ -281,16 +281,15 @@ export default function Benefits() {
               Five independent certifications ensure safety, traceability, and consistent quality in every batch.
             </p>
           </div>
-          <div className="mt-8 grid w-full max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
+          <div className="benefits-certifications-grid mt-8 w-full max-w-4xl">
             {certifications.map((certification) => (
               <div
                 key={certification.src}
-                className="benefits-certification flex items-center justify-center px-3 py-2"
+                className="benefits-certification flex items-center justify-center"
               >
                 <img
                   src={certification.src}
                   alt={certification.label}
-                  className="h-16 w-16 object-contain sm:h-20 sm:w-20 lg:h-24 lg:w-24"
                   loading="lazy"
                 />
               </div>
