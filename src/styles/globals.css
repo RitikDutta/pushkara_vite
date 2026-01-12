@@ -1095,6 +1095,50 @@ body,
     mix-blend-mode: multiply;
   }
 
+  .benefits-certifications {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(520px 320px at 18% 18%, rgba(246, 196, 68, 0.2), transparent 60%),
+      radial-gradient(480px 300px at 82% 0%, rgba(255, 234, 200, 0.14), transparent 60%),
+      linear-gradient(180deg, #2b170e 0%, #1e1008 100%);
+    color: #fef3e2;
+  }
+
+  .benefits-certifications::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 236, 200, 0.18) 0.6px, transparent 0.6px);
+    background-size: 4px 4px;
+    opacity: 0.22;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .benefits-certifications::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='360'%20height='240'%20viewBox='0%200%20360%20240'%20fill='none'%20stroke='%23f5e4c8'%20stroke-opacity='0.25'%20stroke-width='1.4'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M20%2050c30-25%2070-25%20100%200s70%2025%20100%200'%20/%3E%3Cpath%20d='M40%20160c20-15%2045-15%2065%200s45%2015%2065%200'%20/%3E%3Cpath%20d='M260%2040c20%2010%2030%2028%2024%2050s-6%2045%208%2070'%20/%3E%3Cpath%20d='M280%20170c-16%208-26%2022-24%2038'%20/%3E%3Cpath%20d='M140%2020c8%2010%208%2022%200%2032s-8%2022%200%2032'%20/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 360px 240px;
+    opacity: 0.45;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .benefits-certifications-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .benefits-certification img {
+    filter: invert(1) grayscale(1) brightness(1.2) drop-shadow(0 12px 22px rgba(10, 6, 3, 0.4));
+  }
+
   .benefits-title {
     font-family: "Cormorant Garamond", "Palatino Linotype", "Book Antiqua", serif;
   }

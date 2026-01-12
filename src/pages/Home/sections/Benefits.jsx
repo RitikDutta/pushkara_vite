@@ -36,6 +36,14 @@ const orbitIcons = [
   { src: "/brain.png", className: "benefits-orbit-icon--5" },
 ];
 
+const certifications = [
+  { src: "/c1.png", label: "Certification seal 1" },
+  { src: "/c2.png", label: "Certification seal 2" },
+  { src: "/c3.png", label: "Certification seal 3" },
+  { src: "/c4.png", label: "Certification seal 4" },
+  { src: "/c5.png", label: "Certification seal 5" },
+];
+
 export default function Benefits() {
   const sectionRef = useRef(null);
   const maskRef = useRef(null);
@@ -212,6 +220,36 @@ export default function Benefits() {
           <div className="order-3 space-y-10 lg:order-none lg:space-y-12 xl:space-y-14">
             {rightBenefits.map((benefit, index) => (
               <BenefitItem key={benefit.title} side="right" index={index} {...benefit} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="benefits-certifications border-t border-[#56301a]">
+        <div className="benefits-certifications-inner mx-auto flex max-w-6xl flex-col items-center px-4 py-12 text-center sm:py-14 lg:py-16">
+          <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase text-[#f6c244]">
+            <SparkIcon className="h-4 w-4 text-[#f6c244]" />
+            <span className="benefits-eyebrow text-[#f6c244]">Certified Standards</span>
+          </div>
+          <h3 className="benefits-title mt-3 text-2xl font-semibold text-[#fff4e2] sm:text-3xl lg:text-4xl">
+            Verified by Leading Dairy Authorities
+          </h3>
+          <p className="mt-3 max-w-2xl text-sm text-[#f3dcc3]/85 sm:text-base">
+            Five independent certifications ensure safety, traceability, and consistent quality in every batch.
+          </p>
+          <div className="mt-8 grid w-full max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
+            {certifications.map((certification) => (
+              <div
+                key={certification.src}
+                className="benefits-certification flex items-center justify-center px-3 py-2"
+              >
+                <img
+                  src={certification.src}
+                  alt={certification.label}
+                  className="h-16 w-16 object-contain sm:h-20 sm:w-20 lg:h-24 lg:w-24"
+                  loading="lazy"
+                />
+              </div>
             ))}
           </div>
         </div>
