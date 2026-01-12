@@ -100,18 +100,35 @@ export default function Benefits() {
         },
       });
 
-      gsap.from(".benefits-certification", {
-        opacity: 0,
-        y: 16,
-        scale: 0.95,
-        duration: 0.8,
-        ease: "power2.out",
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: ".benefits-certifications-inner",
-          start: "top 78%",
-        },
-      });
+      const certificationIcons = gsap.utils.toArray(".benefits-certification img");
+      if (certificationIcons.length) {
+        gsap.set(certificationIcons, { transformOrigin: "50% 50%" });
+
+        const certTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".benefits-certifications-inner",
+            start: "top 80%",
+            once: true,
+          },
+        });
+
+        const zoomInDuration = 0.55;
+        const zoomOutDuration = 0.65;
+        const staggerStep = 0.42;
+
+        certificationIcons.forEach((icon, index) => {
+          certTimeline.to(
+            icon,
+            {
+              keyframes: [
+                { scale: 1.28, duration: zoomInDuration, ease: "sine.inOut" },
+                { scale: 1, duration: zoomOutDuration, ease: "sine.inOut" },
+              ],
+            },
+            index * staggerStep
+          );
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
