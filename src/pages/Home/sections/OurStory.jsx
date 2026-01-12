@@ -22,17 +22,77 @@ const highlights = [
 
 export default function OurStory() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [rippleKey, setRippleKey] = useState(0);
-  const openTimerRef = useRef(null);
+  const [isPreviewActive, setIsPreviewActive] = useState(false);
+  const [isPreviewReady, setIsPreviewReady] = useState(false);
+  const previewRef = useRef(null);
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    return () => {
-      if (openTimerRef.current) {
-        clearTimeout(openTimerRef.current);
-      }
+    if (isPreviewActive) {
+      return;
+    }
+
+    const preview = previewRef.current;
+    if (!preview) {
+      return;
+    }
+
+    const isInView = () => {
+      const rect = preview.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      return rect.top < viewportHeight * 0.85 && rect.bottom > 0;
     };
-  }, []);
+
+    const activatePreview = () => {
+      setIsPreviewActive(true);
+    };
+
+    if (isInView()) {
+      activatePreview();
+      return;
+    }
+
+    if (typeof IntersectionObserver === "undefined") {
+      activatePreview();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          activatePreview();
+        }
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    observer.observe(preview);
+
+    let rafId = null;
+    const handleScroll = () => {
+      if (rafId) {
+        return;
+      }
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        if (isInView()) {
+          activatePreview();
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      observer.disconnect();
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [isPreviewActive]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -43,7 +103,7 @@ export default function OurStory() {
     let rafId = null;
     const updateParallax = () => {
       const rect = section.getBoundingClientRect();
-      const offset = rect.top * - 0.38;
+      const offset = rect.top * - 0.5;
       section.style.setProperty("--story-parallax", `${offset}px`);
       rafId = null;
     };
@@ -89,13 +149,13 @@ export default function OurStory() {
         },
       });
 
-      gsap.from(".our-story-play", {
+      gsap.from(".our-story-preview", {
         opacity: 0,
         scale: 0.85,
         duration: 0.9,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".our-story-play",
+          trigger: ".our-story-preview",
           start: "top 80%",
         },
       });
@@ -132,24 +192,12 @@ export default function OurStory() {
   }, [isVideoOpen]);
 
   const handlePlayClick = () => {
-    setRippleKey((value) => value + 1);
-    if (isVideoOpen) {
-      return;
-    }
-    if (openTimerRef.current) {
-      clearTimeout(openTimerRef.current);
-    }
-    openTimerRef.current = setTimeout(() => {
+    if (!isVideoOpen) {
       setIsVideoOpen(true);
-      openTimerRef.current = null;
-    }, 420);
+    }
   };
 
   const handleCloseVideo = () => {
-    if (openTimerRef.current) {
-      clearTimeout(openTimerRef.current);
-      openTimerRef.current = null;
-    }
     setIsVideoOpen(false);
   };
 
@@ -171,20 +219,48 @@ export default function OurStory() {
               Our passionate story of fresh
               <span className="block">dairy farming</span>
             </h2>
-            <button
-              type="button"
-              className="our-story-play mt-8"
-              aria-label="Play our story video"
-              aria-haspopup="dialog"
-              aria-expanded={isVideoOpen}
-              onClick={handlePlayClick}
+            <div
+              ref={previewRef}
+              className="our-story-preview mt-8"
+              data-preview-ready={isPreviewReady ? "true" : "false"}
             >
-              <span key={rippleKey} className="our-story-ripple" aria-hidden="true" />
-              <span className="our-story-play-ring" aria-hidden="true" />
-              <span className="our-story-play-inner" aria-hidden="true">
-                <PlayIcon className="h-5 w-5" />
+              <div className="our-story-preview-frame">
+                <div className="our-story-preview-poster" aria-hidden="true">
+                  <span className="our-story-preview-poster-icon" aria-hidden="true">
+                    <PlayIcon className="h-5 w-5" />
+                  </span>
+                </div>
+                {isPreviewActive ? (
+                  <iframe
+                    src="https://www.youtube.com/embed/8bHRcvI2EqM?autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&loop=1&playlist=8bHRcvI2EqM"
+                    title="Pushkara dairy story preview"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    className="our-story-preview-embed"
+                    onLoad={() => setIsPreviewReady(true)}
+                  />
+                ) : null}
+              </div>
+              <span className="our-story-preview-badge" aria-hidden="true">
+                Muted preview
               </span>
-            </button>
+              <button
+                type="button"
+                className="our-story-preview-action"
+                aria-label="Play our story video with sound"
+                aria-haspopup="dialog"
+                aria-expanded={isVideoOpen}
+                onClick={handlePlayClick}
+              >
+                <span className="our-story-preview-play" aria-hidden="true">
+                  <PlayIcon className="h-4 w-4" />
+                </span>
+                <span className="our-story-preview-text">
+                  Watch with sound
+                  <span className="our-story-preview-subtext">Tap to open</span>
+                </span>
+              </button>
+            </div>
           </div>
 
           <div className="w-full border-t border-white/15 pt-8">
@@ -229,7 +305,7 @@ export default function OurStory() {
             </button>
             <div className="our-story-video-inner">
               <iframe
-                src="https://www.youtube.com/embed/8bHRcvI2EqM?autoplay=1"
+                src="https://www.youtube.com/embed/8bHRcvI2EqM?autoplay=1&rel=0&modestbranding=1"
                 title="Pushkara dairy story"
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
