@@ -20,88 +20,70 @@ export default function Navbar() {
         <div className="border-t-[3px] border-[#f6c244]">
           <div className="mx-auto max-w-[1600px] px-4">
             <div className="flex flex-col gap-3 py-3 lg:py-2">
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#f6c244]/35 text-lg font-bold">
-                    P
-                  </div>
+              <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4">
+                <div className="col-start-2 flex items-center gap-3 justify-self-center">
+                  <img
+                    src="/logo.png"
+                    alt="Pushkara logo"
+                    className="h-10 w-10 rounded-xl object-contain"
+                  />
                   <span className="text-2xl font-semibold tracking-tight">Pushkara</span>
                 </div>
 
-              <nav className="hidden lg:flex flex-1 items-center justify-center gap-5 text-sm font-medium text-[#4b3307]">
-                <NavLink to="/" className="transition hover:text-[#0f8a78]">
-                  Home
-                </NavLink>
-                <button className="inline-flex items-center gap-1 transition hover:text-[#0f8a78]">
-                  Pages
-                  <ChevronDownIcon />
-                </button>
-                <NavLink to="/product" className="transition hover:text-[#0f8a78]">
-                  Shop All
-                </NavLink>
-                <button className="inline-flex items-center gap-1 transition hover:text-[#0f8a78]">
-                  Categories
-                  <ChevronDownIcon />
-                </button>
-                <a href="#deals" className="transition hover:text-[#0f8a78]">
-                  Deals & Offers
-                </a>
-                <a href="#contact" className="transition hover:text-[#0f8a78]">
-                  Contact
-                </a>
-              </nav>
-
-              <div className="ml-auto hidden items-center gap-3 xl:flex">
-                <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs">
-                  <PhoneIcon />
-                  <div className="leading-tight">
-                    <span className="block text-[10px] uppercase tracking-wide text-slate-500">
-                      Phone Number
-                    </span>
-                    <span className="font-semibold">+9870-232-232</span>
+                <div className="col-start-3 flex items-center justify-end gap-3">
+                  <div className="hidden items-center gap-3 xl:flex">
+                    <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs">
+                      <PhoneIcon />
+                      <div className="leading-tight">
+                        <span className="block text-[10px] uppercase tracking-wide text-slate-500">
+                          Phone Number
+                        </span>
+                        <span className="font-semibold">+9870-232-232</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {["F", "P", "I", "O"].map((letter) => (
+                        <span
+                          key={letter}
+                          className="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-xs font-semibold text-slate-600 transition hover:bg-slate-100"
+                        >
+                          {letter}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  {["F", "P", "I", "O"].map((letter) => (
-                    <span
-                      key={letter}
-                      className="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-xs font-semibold text-slate-600 transition hover:bg-slate-100"
-                    >
-                      {letter}
-                    </span>
-                  ))}
+
+                  <button className="inline-flex items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-700 transition hover:bg-slate-100 lg:hidden">
+                    <MenuIcon />
+                  </button>
                 </div>
               </div>
 
-                <button className="ml-auto inline-flex items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-700 transition hover:bg-slate-100 lg:hidden">
-                  <MenuIcon />
-                </button>
-              </div>
-
-              <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-4">
-                <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-[#0f8a78] shadow-sm">
-                  <MenuIcon />
-                  All Categories
-                  <ChevronDownIcon />
-                </button>
-
-                <div className="flex w-full flex-1 items-stretch overflow-hidden rounded-xl border border-slate-200 bg-white text-slate-800 shadow-sm">
-                  <button className="hidden items-center gap-1 border-r border-slate-200 px-3 text-xs font-semibold text-slate-600 sm:flex">
-                    All Categories
-                    <ChevronDownIcon className="text-slate-500" />
+              <div className="flex flex-col gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-4">
+                <nav className="hidden items-center justify-center gap-5 text-sm font-medium text-[#4b3307] lg:col-start-2 lg:flex">
+                  <NavLink to="/" className="transition hover:text-[#0f8a78]">
+                    Home
+                  </NavLink>
+                  <button className="inline-flex items-center gap-1 transition hover:text-[#0f8a78]">
+                    Pages
+                    <ChevronDownIcon />
                   </button>
-                  <input
-                    type="text"
-                    placeholder="Type your products..."
-                    className="w-full flex-1 px-3 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none"
-                  />
-                  <button className="inline-flex items-center gap-2 bg-[#f6c244] px-4 text-sm font-semibold text-[#4b3307]">
-                    Search
-                    <SearchIcon />
+                  <NavLink to="/product" className="transition hover:text-[#0f8a78]">
+                    Shop All
+                  </NavLink>
+                  <button className="inline-flex items-center gap-1 transition hover:text-[#0f8a78]">
+                    Categories
+                    <ChevronDownIcon />
                   </button>
-                </div>
+                  <a href="#deals" className="transition hover:text-[#0f8a78]">
+                    Deals & Offers
+                  </a>
+                  <a href="#contact" className="transition hover:text-[#0f8a78]">
+                    Contact
+                  </a>
+                </nav>
 
-                <div className="flex items-center justify-between gap-4 lg:ml-auto">
+                <div className="flex items-center justify-between gap-4 lg:col-start-3 lg:justify-self-end">
                   <button className="hidden items-center gap-2 text-sm font-medium text-slate-700 transition hover:text-[#0f8a78] sm:flex">
                     <UserIcon />
                     Accounts
@@ -171,15 +153,6 @@ function PhoneIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <circle cx="11" cy="11" r="7" strokeWidth="1.8" />
-      <path d="m20 20-3.5-3.5" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }
