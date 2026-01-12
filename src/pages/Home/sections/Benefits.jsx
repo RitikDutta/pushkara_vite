@@ -87,6 +87,31 @@ export default function Benefits() {
           start: "top 75%",
         },
       });
+
+      gsap.from(".benefits-certifications-heading > *", {
+        opacity: 0,
+        y: 20,
+        duration: 0.9,
+        ease: "power2.out",
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: ".benefits-certifications-inner",
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".benefits-certification", {
+        opacity: 0,
+        y: 16,
+        scale: 0.95,
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: ".benefits-certifications-inner",
+          start: "top 78%",
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -227,16 +252,18 @@ export default function Benefits() {
 
       <div className="benefits-certifications border-t border-[#56301a]">
         <div className="benefits-certifications-inner mx-auto flex max-w-6xl flex-col items-center px-4 py-12 text-center sm:py-14 lg:py-16">
-          <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase text-[#f6c244]">
-            <SparkIcon className="h-4 w-4 text-[#f6c244]" />
-            <span className="benefits-eyebrow text-[#f6c244]">Certified Standards</span>
+          <div className="benefits-certifications-heading flex flex-col items-center text-center">
+            <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase text-[#f6c244]">
+              <SparkIcon className="h-4 w-4 text-[#f6c244]" />
+              <span className="benefits-eyebrow text-[#f6c244]">Certified Standards</span>
+            </div>
+            <h3 className="benefits-title mt-3 text-2xl font-semibold text-[#fff4e2] sm:text-3xl lg:text-4xl">
+              Verified by Leading Dairy Authorities
+            </h3>
+            <p className="mt-3 max-w-2xl text-sm text-[#f3dcc3]/85 sm:text-base">
+              Five independent certifications ensure safety, traceability, and consistent quality in every batch.
+            </p>
           </div>
-          <h3 className="benefits-title mt-3 text-2xl font-semibold text-[#fff4e2] sm:text-3xl lg:text-4xl">
-            Verified by Leading Dairy Authorities
-          </h3>
-          <p className="mt-3 max-w-2xl text-sm text-[#f3dcc3]/85 sm:text-base">
-            Five independent certifications ensure safety, traceability, and consistent quality in every batch.
-          </p>
           <div className="mt-8 grid w-full max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
             {certifications.map((certification) => (
               <div
