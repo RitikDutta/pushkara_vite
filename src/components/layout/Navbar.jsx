@@ -42,13 +42,24 @@ export default function Navbar() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      {["F", "P", "I", "O"].map((letter) => (
-                        <span
-                          key={letter}
-                          className="grid h-8 w-8 place-items-center rounded-full border border-slate-200 text-xs font-semibold text-slate-600 transition hover:bg-slate-100"
+                      {[
+                        { label: "Instagram", src: "/Instagram.png" },
+                        { label: "Gmail", src: "/gmail.png" },
+                        { label: "Facebook", src: "/facebook.png" },
+                        { label: "Twitter", src: "/x.png" },
+                      ].map((item) => (
+                        <button
+                          key={item.label}
+                          type="button"
+                          aria-label={item.label}
+                          className="grid h-8 w-8 place-items-center rounded-full border border-slate-200 bg-white transition hover:bg-slate-50"
                         >
-                          {letter}
-                        </span>
+                          <img
+                            src={item.src}
+                            alt=""
+                            className="h-4 w-4 object-contain"
+                          />
+                        </button>
                       ))}
                     </div>
                   </div>
