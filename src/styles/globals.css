@@ -1534,15 +1534,16 @@ body,
   .reels-slider {
     position: relative;
     margin-top: 2.5rem;
+    padding: 0 3.5rem;
   }
 
   .reels-track {
     display: flex;
     gap: 1.5rem;
     overflow-x: auto;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 0;
     scroll-snap-type: x mandatory;
-    scroll-padding: 2rem;
+    scroll-padding: 0;
   }
 
   .reels-track {
@@ -1715,22 +1716,34 @@ body,
   }
 
   .reels-nav-button--left {
-    left: 0.35rem;
+    left: 0.5rem;
   }
 
   .reels-nav-button--right {
-    right: 0.35rem;
+    right: 0.5rem;
   }
 
   @media (max-width: 640px) {
+    .reels-slider {
+      padding: 0 2.75rem;
+    }
+
     .reels-track {
-      padding: 1.1rem 1rem;
-      scroll-padding: 1rem;
+      padding: 1.1rem 0;
+      scroll-padding: 0;
     }
 
     .reels-nav-button {
       width: 36px;
       height: 36px;
+    }
+
+    .reels-nav-button--left {
+      left: 0.25rem;
+    }
+
+    .reels-nav-button--right {
+      right: 0.25rem;
     }
   }
 
