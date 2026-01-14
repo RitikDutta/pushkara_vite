@@ -64,7 +64,12 @@ export default function Reels() {
       return;
     }
 
-    const amount = track.clientWidth * 0.85;
+    const card = track.querySelector(".reels-card");
+    const cardWidth = card?.getBoundingClientRect().width ?? track.clientWidth;
+    const styles = window.getComputedStyle(track);
+    const gapValue = parseFloat(styles.columnGap || styles.gap);
+    const gap = Number.isNaN(gapValue) ? 0 : gapValue;
+    const amount = cardWidth + gap;
     track.scrollBy({ left: amount * direction, behavior: "smooth" });
   };
 
