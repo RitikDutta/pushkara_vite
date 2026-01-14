@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2 md:auto-rows-[minmax(0,1fr)] md:h-[620px]">
           <div className="md:col-span-2 md:row-span-2">
             <div
-              className="hero-card shine-card relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-cover bg-no-repeat bg-right shadow-xl shadow-emerald-50/60"
+              className="hero-card shine-card hero-soft-shadow relative h-full overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-cover bg-no-repeat bg-right"
               style={{ backgroundImage: `url(${heroBg})` }}
             >
               <div className="relative flex h-full items-stretch justify-between gap-6 max-[487px]:gap-4 max-[415px]:flex-col max-[415px]:items-start max-[415px]:gap-3">
@@ -66,7 +66,7 @@ export default function Hero() {
           </div>
 
           <div className="grid h-full grid-cols-2 auto-rows-[minmax(200px,1fr)] gap-4 sm:auto-rows-[minmax(240px,1fr)] md:col-span-1 md:row-span-2 md:h-full md:grid-cols-1 md:grid-rows-2">
-            <div className="hero-tile shine-card relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/second_banner_pot.png')] bg-cover bg-center shadow-lg shadow-emerald-50/60 sm:min-h-[240px] md:bg-[url('/second_banner.png')]">
+            <div className="hero-tile shine-card hero-soft-shadow relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/second_banner_pot.png')] bg-cover bg-center sm:min-h-[240px] md:bg-[url('/second_banner.png')]">
               <div className="absolute -right-10 top-6 h-20 w-20 rotate-6 rounded-3xl bg-white/70 shadow-inner shadow-emerald-100" />
 
               <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
@@ -83,7 +83,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="hero-tile shine-card relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/third_banner_pot.png')] bg-cover bg-center shadow-lg shadow-amber-50/60 sm:min-h-[240px] md:bg-[url('/third_banner.png')]">
+            <div className="hero-tile shine-card hero-soft-shadow relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/third_banner_pot.png')] bg-cover bg-center sm:min-h-[240px] md:bg-[url('/third_banner.png')]">
               <div className="absolute -left-8 bottom-6 h-16 w-16 rotate-3 rounded-3xl bg-white/70 shadow-inner shadow-amber-100" />
 
               <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
