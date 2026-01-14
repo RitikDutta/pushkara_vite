@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const reels = [
   { id: "u0Q5HBRDi-w", title: "Reel 01" },
@@ -17,11 +19,49 @@ const buildEmbedUrl = (id) =>
 const buildThumbUrl = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
 export default function Reels() {
+  const sectionRef = useRef(null);
   const trackRef = useRef(null);
   const [activeId, setActiveId] = useState(null);
   const [hasOverflow, setHasOverflow] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.from(".reels-header > *", {
+        opacity: 0,
+        y: 24,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: ".reels-header",
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".reels-card-shell", {
+        opacity: 0,
+        y: 28,
+        duration: 0.9,
+        ease: "power2.out",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: ".reels-track",
+          start: "top 82%",
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -78,17 +118,17 @@ export default function Reels() {
   };
 
   return (
-    <section className="reels-section relative overflow-hidden">
+    <section ref={sectionRef} className="reels-section relative overflow-hidden">
       <div className="reels-bg" aria-hidden="true" />
       <div className="reels-sheen" aria-hidden="true" />
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:py-24 lg:py-28">
         <div className="reels-header text-center">
           <div className="reels-eyebrow">Reels</div>
           <h2 className="reels-title mt-3 text-3xl sm:text-4xl lg:text-5xl">
-            Explore Our Reels
+            The Making of Tradition
           </h2>
           <p className="reels-subtitle mt-3 text-base sm:text-lg">
-            Tap any short to play a quick peek into our farm and kitchen.
+            From our farm to your feed
           </p>
         </div>
 
