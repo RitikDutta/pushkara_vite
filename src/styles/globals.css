@@ -1540,9 +1540,9 @@ body,
     display: flex;
     gap: 1.5rem;
     overflow-x: auto;
-    padding: 1.5rem 2.75rem;
+    padding: 1.5rem 2rem;
     scroll-snap-type: x mandatory;
-    scroll-padding: 2.75rem;
+    scroll-padding: 2rem;
   }
 
   .reels-track {
@@ -1724,8 +1724,8 @@ body,
 
   @media (max-width: 640px) {
     .reels-track {
-      padding: 1.25rem 1.25rem;
-      scroll-padding: 1.25rem;
+      padding: 1.1rem 1rem;
+      scroll-padding: 1rem;
     }
 
     .reels-nav-button {

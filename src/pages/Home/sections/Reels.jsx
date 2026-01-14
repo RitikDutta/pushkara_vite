@@ -76,7 +76,7 @@ export default function Reels() {
     <section className="reels-section relative overflow-hidden">
       <div className="reels-bg" aria-hidden="true" />
       <div className="reels-sheen" aria-hidden="true" />
-      <div className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:py-24 lg:py-28">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:py-24 lg:py-28">
         <div className="reels-header text-center">
           <div className="reels-eyebrow">Reels</div>
           <h2 className="reels-title mt-3 text-3xl sm:text-4xl lg:text-5xl">
