@@ -1314,31 +1314,103 @@ body,
 
   .faq-section {
     position: relative;
-    background:
-      radial-gradient(520px 320px at 16% 16%, rgba(255, 224, 170, 0.38), transparent 60%),
-      radial-gradient(520px 320px at 84% 18%, rgba(255, 214, 160, 0.3), transparent 60%),
-      linear-gradient(180deg, #fffdf7 0%, #fff1dc 100%);
-    color: #4b2e18;
+    color: #fff6e5;
     font-family: "Alegreya Sans", "Trebuchet MS", sans-serif;
   }
 
-  .faq-texture {
+  .faq-bg {
+    position: absolute;
+    inset: -12% 0;
+    pointer-events: none;
+    background-image: url("/faq_bg.png");
+    background-size: cover;
+    background-position: center;
+    transform: translate3d(0, var(--faq-parallax, 0px), 0) scale(1.1);
+    will-change: transform;
+    z-index: 0;
+  }
+
+  .faq-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: radial-gradient(rgba(186, 138, 68, 0.16) 0.6px, transparent 0.6px);
-    background-size: 4px 4px;
-    opacity: 0.25;
-    mix-blend-mode: multiply;
+    background: linear-gradient(
+      90deg,
+      rgba(35, 20, 11, 0.82) 0%,
+      rgba(35, 20, 11, 0.62) 38%,
+      rgba(35, 20, 11, 0.35) 65%,
+      rgba(35, 20, 11, 0.12) 100%
+    );
+    z-index: 1;
+  }
+
+  .faq-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 24%, rgba(255, 231, 184, 0.2), transparent 55%),
+      radial-gradient(circle at 82% 22%, rgba(255, 226, 168, 0.15), transparent 55%),
+      radial-gradient(circle at 50% 65%, rgba(10, 6, 3, 0.55), transparent 70%);
+    opacity: 0.85;
+    z-index: 1;
+  }
+
+  .faq-dots {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255, 236, 200, 0.2) 0.6px, transparent 0.6px);
+    background-size: 3px 3px;
+    opacity: 0.16;
+    mix-blend-mode: screen;
+    z-index: 1;
   }
 
   .faq-title {
     font-family: "Cormorant Garamond", "Palatino Linotype", "Book Antiqua", serif;
+    text-shadow:
+      0 16px 30px rgba(12, 7, 4, 0.45),
+      0 6px 12px rgba(12, 7, 4, 0.35);
   }
 
   .faq-eyebrow {
     font-family: "Cinzel", "Trajan Pro", "Times New Roman", serif;
     letter-spacing: 0.35em;
+    text-shadow: 0 10px 20px rgba(12, 7, 4, 0.35);
+  }
+
+  .faq-subtitle {
+    text-shadow: 0 10px 24px rgba(12, 7, 4, 0.35);
+  }
+
+  .faq-card {
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 24px;
+    background: rgba(255, 250, 238, 0.94);
+    color: #4b2e18;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+      0 30px 60px rgba(12, 7, 4, 0.45),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .faq-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.8), transparent 55%);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .faq-card > * {
+    position: relative;
+    z-index: 1;
   }
 
   .faq-list {
@@ -1346,7 +1418,7 @@ body,
   }
 
   .faq-item {
-    padding: 1.2rem 0;
+    padding: 1.1rem 0;
     border-bottom: 1px solid rgba(75, 46, 24, 0.15);
   }
 
