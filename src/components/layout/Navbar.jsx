@@ -75,10 +75,9 @@ export default function Navbar() {
                   <NavLink to="/" className="transition hover:text-[#0f8a78]">
                     Home
                   </NavLink>
-                  <button className="inline-flex items-center gap-1 transition hover:text-[#0f8a78]">
-                    Pages
-                    <ChevronDownIcon />
-                  </button>
+                  <NavLink to="/about" className="transition hover:text-[#0f8a78]">
+                    About Us
+                  </NavLink>
                   <NavLink to="/product" className="transition hover:text-[#0f8a78]">
                     Shop All
                   </NavLink>
