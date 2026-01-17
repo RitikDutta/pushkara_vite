@@ -15,13 +15,16 @@ export default function About() {
     const ctx = gsap.context(() => {
       gsap.from(".about-hero [data-animate]", {
         opacity: 0,
-        y: 24,
-        duration: 0.9,
-        ease: "power3.out",
+        y: 30,
+        rotateX: 12,
+        transformPerspective: 900,
+        transformOrigin: "center top",
+        duration: 1,
+        ease: "expo.out",
         stagger: 0.12,
       });
 
-      gsap.utils.toArray(".about-section").forEach((section) => {
+      gsap.utils.toArray(".about-section").forEach((section, index) => {
         const targets = section.querySelectorAll("[data-animate]");
         if (!targets.length) {
           return;
@@ -29,10 +32,11 @@ export default function About() {
 
         gsap.from(targets, {
           opacity: 0,
-          y: 22,
-          duration: 0.85,
+          y: 26,
+          x: index % 2 === 0 ? -18 : 18,
+          duration: 0.95,
           ease: "power3.out",
-          stagger: 0.12,
+          stagger: 0.1,
           scrollTrigger: {
             trigger: section,
             start: "top 78%",
@@ -40,12 +44,13 @@ export default function About() {
         });
       });
 
-      gsap.utils.toArray(".about-image").forEach((image) => {
+      gsap.utils.toArray(".about-image").forEach((image, index) => {
         gsap.from(image, {
           opacity: 0,
-          y: 18,
-          scale: 0.96,
-          duration: 0.9,
+          y: 26,
+          scale: 1.05,
+          rotate: index % 2 === 0 ? -2 : 2,
+          duration: 1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: image,
@@ -54,12 +59,13 @@ export default function About() {
         });
       });
 
-      gsap.utils.toArray(".about-bullet").forEach((item) => {
+      gsap.utils.toArray(".about-bullet").forEach((item, index) => {
         gsap.from(item, {
           opacity: 0,
-          x: -12,
-          duration: 0.6,
-          ease: "power2.out",
+          x: -16,
+          rotate: index % 2 === 0 ? -1.5 : 1.5,
+          duration: 0.65,
+          ease: "back.out(1.4)",
           scrollTrigger: {
             trigger: item,
             start: "top 90%",
@@ -69,9 +75,12 @@ export default function About() {
 
       gsap.from(".about-closing [data-animate]", {
         opacity: 0,
-        y: 24,
-        duration: 0.9,
-        ease: "power3.out",
+        y: 30,
+        rotateX: 10,
+        transformPerspective: 900,
+        transformOrigin: "center top",
+        duration: 1,
+        ease: "expo.out",
         stagger: 0.12,
         scrollTrigger: {
           trigger: ".about-closing",
@@ -87,8 +96,8 @@ export default function About() {
     <main className="bg-[#fff8e8] text-[#4b3307]" ref={pageRef}>
       <section className="about-hero relative overflow-hidden border-b border-[#f1d7a1]/70">
         <div className="absolute inset-0 bg-gradient-to-br from-[#fff4dd] via-[#fff8e8] to-white" />
-        <div className="pointer-events-none absolute -top-28 right-[-10%] h-72 w-72 rounded-full bg-[#f6c244]/30 blur-3xl animate-float" />
-        <div className="pointer-events-none absolute bottom-[-30%] left-[-15%] h-80 w-80 rounded-full bg-[#f4b54d]/20 blur-[90px] animate-float" />
+        <div className="pointer-events-none absolute -top-28 right-[-10%] h-72 w-72 rounded-full bg-[#f6c244]/30 blur-3xl animate-drift" />
+        <div className="pointer-events-none absolute bottom-[-30%] left-[-15%] h-80 w-80 rounded-full bg-[#f4b54d]/20 blur-[90px] animate-drift-reverse" />
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24">
           <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
             <div className="space-y-6">

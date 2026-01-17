@@ -120,6 +120,80 @@ body,
     }
   }
 
+  @keyframes text-arc-in {
+    0% {
+      opacity: 0;
+      transform: perspective(900px) translateY(22px) rotateX(12deg);
+      filter: blur(6px);
+    }
+    60% {
+      opacity: 1;
+      transform: perspective(900px) translateY(-2px) rotateX(0deg);
+      filter: blur(0);
+    }
+    100% {
+      opacity: 1;
+      transform: perspective(900px) translateY(0) rotateX(0deg);
+    }
+  }
+
+  @keyframes card-rise {
+    0% {
+      opacity: 0;
+      transform: translateY(18px) scale(0.97);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes icon-pop {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.6) rotate(-10deg);
+    }
+    70% {
+      opacity: 1;
+      transform: translateY(-2px) scale(1.05) rotate(0deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes panel-rise {
+    0% {
+      opacity: 0;
+      transform: perspective(900px) translateY(28px) rotateX(6deg);
+    }
+    100% {
+      opacity: 1;
+      transform: perspective(900px) translateY(0) rotateX(0deg);
+    }
+  }
+
+  @keyframes drift-orbit {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(14px, -16px) scale(1.05);
+    }
+  }
+
+  @keyframes drift-orbit-reverse {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-12px, 18px) scale(0.96);
+    }
+  }
+
   @keyframes product-slide-in-right {
     from {
       opacity: 0;
@@ -178,6 +252,32 @@ body,
 
   .animate-float {
     animation: float-soft 6s ease-in-out infinite;
+  }
+
+  .animate-text-arc {
+    animation: text-arc-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transform-origin: center top;
+  }
+
+  .animate-card-rise {
+    animation: card-rise 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .animate-icon-pop {
+    animation: icon-pop 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-panel-rise {
+    animation: panel-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transform-origin: center top;
+  }
+
+  .animate-drift {
+    animation: drift-orbit 9s ease-in-out infinite;
+  }
+
+  .animate-drift-reverse {
+    animation: drift-orbit-reverse 11s ease-in-out infinite;
   }
 
   .marquee {

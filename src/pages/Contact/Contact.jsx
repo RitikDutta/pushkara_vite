@@ -35,7 +35,7 @@ export default function Contact() {
       <section className="relative mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24 xl:max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-16 xl:gap-20">
           <div className="space-y-10">
-            <div className="space-y-4 animate-fade-up" style={{ animationDelay: "40ms" }}>
+            <div className="space-y-4 animate-text-arc" style={{ animationDelay: "40ms" }}>
               <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-[#a66a1b]">
                 <SparkleIcon className="h-4 w-4 text-[#f6c244]" />
                 <span>Contact Us</span>
@@ -45,13 +45,14 @@ export default function Contact() {
               </h1>
             </div>
 
-            <div className="space-y-6 animate-fade-up" style={{ animationDelay: "140ms" }}>
+            <div className="space-y-6">
               {contactItems.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={item.title}
-                    className={`flex gap-4 pb-6 ${index !== contactItems.length - 1 ? "border-b border-[#e8d5b9]" : ""}`}
+                    className={`animate-card-rise flex gap-4 pb-6 ${index !== contactItems.length - 1 ? "border-b border-[#e8d5b9]" : ""}`}
+                    style={{ animationDelay: `${140 + index * 110}ms` }}
                   >
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f6c244] text-[#3b2318] shadow-[0_10px_22px_rgba(75,51,7,0.18)]">
                       <Icon className="h-5 w-5" />
@@ -65,19 +66,20 @@ export default function Contact() {
               })}
             </div>
 
-            <div className="space-y-4 animate-fade-up" style={{ animationDelay: "240ms" }}>
+            <div className="space-y-4 animate-text-arc" style={{ animationDelay: "260ms" }}>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#6a4a23]">
                 Follow Us Today
               </p>
               <div className="flex items-center gap-3">
-                {socialLinks.map((link) => {
+                {socialLinks.map((link, index) => {
                   const Icon = link.icon;
                   return (
                     <a
                       key={link.label}
                       href="#"
                       aria-label={link.label}
-                      className="grid h-10 w-10 place-items-center rounded-full bg-[#3b2318] text-[#fdf2dd] transition hover:translate-y-[-2px] hover:bg-[#2d1b12]"
+                      className="animate-icon-pop grid h-10 w-10 place-items-center rounded-full bg-[#3b2318] text-[#fdf2dd] transition hover:translate-y-[-2px] hover:bg-[#2d1b12]"
+                      style={{ animationDelay: `${320 + index * 80}ms` }}
                     >
                       <Icon className="h-4 w-4" />
                     </a>
@@ -88,7 +90,7 @@ export default function Contact() {
           </div>
 
           <form
-            className="animate-fade-up rounded-[28px] bg-[#3b2318] p-6 text-[#fef6e9] shadow-[0_28px_50px_rgba(32,18,8,0.35)] sm:p-8"
+            className="animate-panel-rise rounded-[28px] bg-[#3b2318] p-6 text-[#fef6e9] shadow-[0_28px_50px_rgba(32,18,8,0.35)] sm:p-8"
             style={{ animationDelay: "200ms" }}
           >
             <div className="space-y-2">
