@@ -88,9 +88,9 @@ export default function Navbar() {
                   <a href="#deals" className="transition hover:text-[#0f8a78]">
                     Deals & Offers
                   </a>
-                  <a href="#contact" className="transition hover:text-[#0f8a78]">
+                  <NavLink to="/contact" className="transition hover:text-[#0f8a78]">
                     Contact
-                  </a>
+                  </NavLink>
                 </nav>
 
                 <div className="flex items-center justify-between gap-4 lg:col-start-3 lg:justify-self-end">
