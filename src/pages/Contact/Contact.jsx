@@ -32,8 +32,8 @@ export default function Contact() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#fff5e2,transparent_55%)]" />
       </div>
 
-      <section className="relative mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+      <section className="relative mx-auto max-w-6xl px-4 py-16 sm:py-20 lg:py-24 xl:max-w-7xl">
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-16 xl:gap-20">
           <div className="space-y-10">
             <div className="space-y-4 animate-fade-up" style={{ animationDelay: "40ms" }}>
               <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-[#a66a1b]">
@@ -43,10 +43,6 @@ export default function Contact() {
               <h1 className="text-4xl font-semibold leading-tight sm:text-5xl">
                 Stay directly connected with Pushkara today
               </h1>
-              <p className="max-w-xl text-base text-[#5a3c15] sm:text-lg">
-                We are here to answer questions, plan deliveries, and keep you stocked with
-                fresh dairy essentials.
-              </p>
             </div>
 
             <div className="space-y-6 animate-fade-up" style={{ animationDelay: "140ms" }}>
@@ -173,6 +169,20 @@ export default function Contact() {
               Submit Message
             </button>
           </form>
+        </div>
+      </section>
+
+      <section className="relative w-full">
+        <div className="h-screen w-full overflow-hidden border border-[#edd4ae] bg-[#fdf2dd] shadow-[0_18px_35px_rgba(75,51,7,0.12)]">
+          <iframe
+            title="Pushkar map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28568.321682090544!2d74.5463674!3d26.48665015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396bdd22e5572a2f%3A0xb8733d912fcdf2ea!2sPushkar%2C%20Rajasthan%20305022!5e0!3m2!1sen!2sin!4v1768644973192!5m2!1sen!2sin"
+            className="h-full w-full"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </main>
