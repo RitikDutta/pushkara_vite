@@ -9,8 +9,25 @@ import Footer from "../components/layout/Footer";
 
 export default function App() {
   useLayoutEffect(() => {
+    const header = document.querySelector("[data-scroll-header]");
+    const updateHeaderOffset = () => {
+      if (!header) {
+        return;
+      }
+
+      document.documentElement.style.setProperty(
+        "--app-header-height",
+        `${header.offsetHeight}px`
+      );
+    };
+
+    updateHeaderOffset();
+    window.addEventListener("resize", updateHeaderOffset);
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return undefined;
+      return () => {
+        window.removeEventListener("resize", updateHeaderOffset);
+      };
     }
 
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -23,28 +40,20 @@ export default function App() {
       effects: true,
     });
 
-    const header = document.querySelector("[data-scroll-header]");
-    const headerTrigger =
-      header &&
-      ScrollTrigger.create({
-        trigger: header,
-        start: "top top",
-        end: () => ScrollTrigger.maxScroll(smoother.wrapper()),
-        pin: true,
-        pinSpacing: false,
-        invalidateOnRefresh: true,
-      });
-
     return () => {
-      headerTrigger?.kill();
       smoother.kill();
+      window.removeEventListener("resize", updateHeaderOffset);
     };
   }, []);
 
   return (
     <div id="smooth-wrapper">
-      <div id="smooth-content" className="min-h-screen bg-white text-black">
-        <Navbar />
+      <Navbar />
+      <div
+        id="smooth-content"
+        className="min-h-screen bg-white text-black"
+        style={{ paddingTop: "var(--app-header-height)" }}
+      >
 
         <Routes>
           {routes.map((r) => (
