@@ -134,7 +134,7 @@ export default function About() {
             <div className="relative">
               <div className="rounded-3xl border border-[#f1d7a1] bg-white/70 p-3 shadow-[0_20px_45px_rgba(75,51,7,0.18)]">
                 <img
-                  src="/about_people_standing_outside.png"
+                  src="/about_people_standing_outside.webp"
                   alt="Pushkara family outside their original shop"
                   className="about-image w-full rounded-2xl object-cover transition duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(75,51,7,0.22)]"
                 />
@@ -175,13 +175,13 @@ export default function About() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <img
-                src="/about_owner.png"
+                src="/about_owner.webp"
                 alt="Founder portrait from the early years"
                 className="about-image h-56 w-full rounded-2xl object-cover shadow-[0_14px_30px_rgba(75,51,7,0.18)] transition duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_20px_38px_rgba(75,51,7,0.22)] sm:h-64"
                 loading="lazy"
               />
               <img
-                src="/about_office_old_pic.png"
+                src="/about_office_old_pic.webp"
                 alt="Family legacy at the original shop"
                 className="about-image h-56 w-full rounded-2xl object-cover shadow-[0_14px_30px_rgba(75,51,7,0.18)] transition duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_20px_38px_rgba(75,51,7,0.22)] sm:h-64"
                 loading="lazy"
@@ -196,13 +196,13 @@ export default function About() {
           <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
             <div className="order-2 grid gap-4 sm:grid-cols-2 lg:order-1">
               <img
-                src="/about_machine.png"
+                src="/about_machine.webp"
                 alt="Original dairy machinery from the early days"
                 className="about-image h-56 w-full rounded-2xl object-cover shadow-[0_14px_30px_rgba(75,51,7,0.18)] transition duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_20px_38px_rgba(75,51,7,0.22)] sm:h-64"
                 loading="lazy"
               />
               <img
-                src="/about_working.png"
+                src="/about_working.webp"
                 alt="Modern-day ghee craftsmanship"
                 className="about-image h-56 w-full rounded-2xl object-cover shadow-[0_14px_30px_rgba(75,51,7,0.18)] transition duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_20px_38px_rgba(75,51,7,0.22)] sm:h-64"
                 loading="lazy"
@@ -303,7 +303,7 @@ export default function About() {
             <div className="relative">
               <div className="rounded-3xl border border-[#f1d7a1] bg-[#fff8e8] p-3 shadow-[0_20px_45px_rgba(75,51,7,0.18)]">
                 <img
-                  src="/about_workers.png"
+                  src="/about_workers.webp"
                   alt="Artisans preparing ghee with traditional care"
                   className="about-image w-full rounded-2xl object-cover transition duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(75,51,7,0.22)]"
                   loading="lazy"
@@ -319,13 +319,13 @@ export default function About() {
           <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
             <div className="order-2 grid gap-4 sm:grid-cols-2 lg:order-1">
               <img
-                src="/about_award.png"
+                src="/about_award.webp"
                 alt="Recognition of Pushkara's community impact"
                 className="about-image h-56 w-full rounded-2xl object-cover shadow-[0_14px_30px_rgba(75,51,7,0.18)] transition duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_20px_38px_rgba(75,51,7,0.22)] sm:h-64"
                 loading="lazy"
               />
               <img
-                src="/about_inoguration.png"
+                src="/about_inoguration.webp"
                 alt="Community moments at the Pushkara inauguration"
                 className="about-image h-56 w-full rounded-2xl object-cover shadow-[0_14px_30px_rgba(75,51,7,0.18)] transition duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_20px_38px_rgba(75,51,7,0.22)] sm:h-64"
                 loading="lazy"
