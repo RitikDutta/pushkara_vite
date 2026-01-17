@@ -2,7 +2,10 @@ import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 animate-nav-drop text-[#4b3307] shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
+    <header
+      data-scroll-header
+      className="sticky top-0 z-50 animate-nav-drop text-[#4b3307] shadow-[0_10px_24px_rgba(0,0,0,0.12)]"
+    >
       <div className="marquee bg-[#f6c244] text-[11px] uppercase tracking-[0.25em] text-[#4b3307]">
         <div className="marquee-track">
           <span>Free delivery on orders over Rs 5,000</span>
