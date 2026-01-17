@@ -124,47 +124,47 @@ export default function Product() {
       <div className="product-luxe-vignette" />
       <SparkleIcon className="product-sparkle hidden sm:block" />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:py-16 lg:py-20">
-        <section className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          <div className="product-copy order-2 flex flex-col gap-6 text-center sm:text-left lg:order-1">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:py-16 lg:py-20 xl:max-w-[72rem] xl:px-8 xl:py-22 2xl:max-w-[80rem] 2xl:px-10 2xl:py-24">
+        <section className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 xl:grid-cols-[1.2fr_0.8fr] xl:gap-16 2xl:grid-cols-[1.25fr_0.75fr] 2xl:gap-20">
+          <div className="product-copy order-2 flex flex-col gap-6 text-center sm:text-left lg:order-1 xl:gap-7 2xl:gap-8">
             <div className="flex items-center justify-center gap-4 sm:justify-start">
               <span className="h-[1px] w-12 bg-[#f6c244]/70" />
-              <span className="product-eyebrow text-[11px] font-semibold uppercase text-[#f6c244]">
+              <span className="product-eyebrow text-[11px] font-semibold uppercase text-[#f6c244] xl:text-[11px] 2xl:text-xs">
                 Signature Batch
               </span>
             </div>
 
-            <h1 className="product-title text-3xl font-semibold text-[#fff3d6] sm:text-5xl lg:text-6xl">
+            <h1 className="product-title text-3xl font-semibold text-[#fff3d6] sm:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl">
               Golden Pottery Ghee
             </h1>
 
-            <p className="mx-auto max-w-xl text-sm text-[#f7e6c2]/85 sm:mx-0 sm:text-base">
+            <p className="mx-auto max-w-xl text-sm text-[#f7e6c2]/85 sm:mx-0 sm:text-base xl:max-w-2xl xl:text-base 2xl:max-w-3xl 2xl:text-lg">
               Slow-cooked, nutty, and deeply aromatic. A spoonful of comfort for every meal.
             </p>
 
             <div className="flex flex-wrap items-end justify-center gap-4 sm:justify-start">
-              <span className="product-price text-3xl font-semibold text-[#f6c244] sm:text-4xl">
+              <span className="product-price text-3xl font-semibold text-[#f6c244] sm:text-4xl xl:text-4xl 2xl:text-5xl">
                 Rs 1,999
               </span>
-              <span className="text-xs uppercase tracking-[0.35em] text-[#f7e6c2]/70">
+              <span className="text-xs uppercase tracking-[0.35em] text-[#f7e6c2]/70 xl:text-xs 2xl:text-sm">
                 1999 rupees
               </span>
             </div>
 
             <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
-              <button className="btn-gold w-full rounded-xl px-5 py-3 text-sm font-semibold sm:w-auto">
+              <button className="btn-gold w-full rounded-xl px-5 py-3 text-sm font-semibold sm:w-auto xl:px-5 xl:py-3 xl:text-sm 2xl:px-6 2xl:py-4 2xl:text-base">
                 Buy Now
               </button>
-              <button className="btn-outline w-full rounded-xl px-5 py-3 text-sm font-semibold sm:w-auto">
+              <button className="btn-outline w-full rounded-xl px-5 py-3 text-sm font-semibold sm:w-auto xl:px-5 xl:py-3 xl:text-sm 2xl:px-6 2xl:py-4 2xl:text-base">
                 View Details
               </button>
             </div>
 
-            <div className="mx-auto max-w-xl space-y-2 sm:mx-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#f6c244]/80">
+            <div className="mx-auto max-w-xl space-y-2 sm:mx-0 xl:max-w-2xl 2xl:max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#f6c244]/80 xl:text-xs 2xl:text-sm">
                 What makes it special
               </p>
-              <p className="text-sm text-[#f7e6c2]/85 sm:text-base">
+              <p className="text-sm text-[#f7e6c2]/85 sm:text-base xl:text-base 2xl:text-lg">
                 Crafted in small batches using the traditional bilona method. We
                 slow-cook the cream for a deep, nutty aroma and seal it in glass
                 to keep every spoonful rich, clean, and comforting.
@@ -172,7 +172,7 @@ export default function Product() {
             </div>
           </div>
 
-          <div className="product-visual order-1 flex flex-col items-center gap-6 lg:order-2 lg:items-end">
+          <div className="product-visual order-1 flex flex-col items-center gap-6 lg:order-2 lg:items-end xl:gap-8 2xl:gap-10">
             <div className="product-image-stage">
               <button
                 type="button"

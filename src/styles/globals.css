@@ -538,8 +538,9 @@ body,
 
   .product-image-stage {
     position: relative;
-    width: min(100%, 640px);
+    width: min(100%, 680px);
     aspect-ratio: 5 / 4;
+    --product-image-scale: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -586,7 +587,7 @@ body,
   .product-image-reflection {
     position: absolute;
     top: calc(100% - 22px);
-    transform: scaleY(-1);
+    transform: scaleY(-1) scale(var(--product-image-scale, 1));
     transform-origin: top;
     opacity: 0.22;
     filter: blur(1.5px);
@@ -604,6 +605,8 @@ body,
     filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.45));
     width: 100%;
     height: 100%;
+    transform: scale(var(--product-image-scale, 1));
+    transform-origin: center;
   }
 
   .product-image-nav {
@@ -1886,6 +1889,80 @@ body,
 
     .product-image-nav--right {
       right: 8px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .product-image-stage {
+      width: min(100%, 840px);
+      --product-image-scale: 1.28;
+    }
+
+    .product-image-glow {
+      width: min(70%, 480px);
+    }
+
+    .product-image-base {
+      width: min(70%, 520px);
+    }
+
+    .product-image-nav--left {
+      left: -24px;
+    }
+
+    .product-image-nav--right {
+      right: -24px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .product-image-stage {
+      width: min(100%, 880px);
+      --product-image-scale: 1.32;
+    }
+
+    .product-image-glow {
+      width: min(70%, 420px);
+    }
+
+    .product-image-base {
+      width: min(70%, 470px);
+    }
+
+    .product-image-nav {
+      width: 48px;
+      height: 48px;
+    }
+
+    .product-image-nav--left {
+      left: -32px;
+    }
+
+    .product-image-nav--right {
+      right: -32px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .product-image-stage {
+      width: min(100%, 980px);
+      --product-image-scale: 1.4;
+    }
+
+    .product-image-glow {
+      width: min(70%, 480px);
+    }
+
+    .product-image-base {
+      width: min(70%, 520px);
+    }
+
+    .product-image-nav--left {
+      left: -38px;
+    }
+
+    .product-image-nav--right {
+      right: -38px;
     }
   }
 
