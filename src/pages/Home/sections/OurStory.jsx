@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -20,79 +21,14 @@ const highlights = [
   },
 ];
 
+const STORY_VIDEO_ID = "8bHRcvI2EqM";
+const PREVIEW_VIDEO_SRC = `https://www.youtube.com/embed/${STORY_VIDEO_ID}?autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&loop=1&playlist=${STORY_VIDEO_ID}`;
+const FULL_VIDEO_SRC = `https://www.youtube.com/embed/${STORY_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`;
+
 export default function OurStory() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [isPreviewActive, setIsPreviewActive] = useState(false);
   const [isPreviewReady, setIsPreviewReady] = useState(false);
-  const previewRef = useRef(null);
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    if (isPreviewActive) {
-      return;
-    }
-
-    const preview = previewRef.current;
-    if (!preview) {
-      return;
-    }
-
-    const isInView = () => {
-      const rect = preview.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      return rect.top < viewportHeight * 0.85 && rect.bottom > 0;
-    };
-
-    const activatePreview = () => {
-      setIsPreviewActive(true);
-    };
-
-    if (isInView()) {
-      activatePreview();
-      return;
-    }
-
-    if (typeof IntersectionObserver === "undefined") {
-      activatePreview();
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          activatePreview();
-        }
-      },
-      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
-    );
-
-    observer.observe(preview);
-
-    let rafId = null;
-    const handleScroll = () => {
-      if (rafId) {
-        return;
-      }
-      rafId = window.requestAnimationFrame(() => {
-        rafId = null;
-        if (isInView()) {
-          activatePreview();
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-
-    return () => {
-      observer.disconnect();
-      if (rafId) {
-        window.cancelAnimationFrame(rafId);
-      }
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, [isPreviewActive]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -149,17 +85,6 @@ export default function OurStory() {
         },
       });
 
-      gsap.from(".our-story-preview", {
-        opacity: 0,
-        scale: 0.85,
-        duration: 0.9,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".our-story-preview",
-          start: "top 80%",
-        },
-      });
-
       gsap.from(".our-story-feature", {
         opacity: 0,
         y: 20,
@@ -192,9 +117,7 @@ export default function OurStory() {
   }, [isVideoOpen]);
 
   const handlePlayClick = () => {
-    if (!isVideoOpen) {
-      setIsVideoOpen(true);
-    }
+    setIsVideoOpen(true);
   };
 
   const handleCloseVideo = () => {
@@ -220,7 +143,6 @@ export default function OurStory() {
               <span className="block">dairy farming</span>
             </h2>
             <div
-              ref={previewRef}
               className="our-story-preview mt-8"
               data-preview-ready={isPreviewReady ? "true" : "false"}
             >
@@ -230,16 +152,15 @@ export default function OurStory() {
                     <PlayIcon className="h-5 w-5" />
                   </span>
                 </div>
-                {isPreviewActive ? (
-                  <iframe
-                    src="https://www.youtube.com/embed/8bHRcvI2EqM?autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&loop=1&playlist=8bHRcvI2EqM"
-                    title="Pushkara dairy story preview"
-                    allow="autoplay; encrypted-media; picture-in-picture"
-                    allowFullScreen
-                    className="our-story-preview-embed"
-                    onLoad={() => setIsPreviewReady(true)}
-                  />
-                ) : null}
+                <iframe
+                  src={PREVIEW_VIDEO_SRC}
+                  title="Pushkara dairy story preview"
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                  className="our-story-preview-embed"
+                  onLoad={() => setIsPreviewReady(true)}
+                />
               </div>
               <span className="our-story-preview-badge" aria-hidden="true">
                 Muted preview
@@ -286,34 +207,37 @@ export default function OurStory() {
         </div>
       </div>
 
-      {isVideoOpen && (
-        <div className="our-story-video-modal" role="dialog" aria-modal="true">
-          <button
-            type="button"
-            className="our-story-video-backdrop"
-            aria-label="Close video"
-            onClick={handleCloseVideo}
-          />
-          <div className="our-story-video-frame" role="document">
-            <button
-              type="button"
-              className="our-story-video-close"
-              aria-label="Close video"
-              onClick={handleCloseVideo}
-            >
-              x
-            </button>
-            <div className="our-story-video-inner">
-              <iframe
-                src="https://www.youtube.com/embed/8bHRcvI2EqM?autoplay=1&rel=0&modestbranding=1"
-                title="Pushkara dairy story"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
+      {isVideoOpen && typeof document !== "undefined"
+        ? createPortal(
+            <div className="our-story-video-modal" role="dialog" aria-modal="true">
+              <button
+                type="button"
+                className="our-story-video-backdrop"
+                aria-label="Close video"
+                onClick={handleCloseVideo}
               />
-            </div>
-          </div>
-        </div>
-      )}
+              <div className="our-story-video-frame" role="document">
+                <button
+                  type="button"
+                  className="our-story-video-close"
+                  aria-label="Close video"
+                  onClick={handleCloseVideo}
+                >
+                  x
+                </button>
+                <div className="our-story-video-inner">
+                  <iframe
+                    src={FULL_VIDEO_SRC}
+                    title="Pushkara dairy story"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </div>,
+            document.body
+          )
+        : null}
     </section>
   );
 }
