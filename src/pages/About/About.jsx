@@ -391,7 +391,7 @@ export default function About() {
             className="mt-6 text-sm uppercase tracking-[0.35em] text-[#f6c244]"
             data-animate
           >
-            In Tradition We Trust.
+            The Taste of Tradition.
           </p>
         </div>
       </section>
