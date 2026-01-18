@@ -30,7 +30,7 @@ export default function Navbar() {
                     alt="Pushkara logo"
                     className="h-10 w-10 rounded-xl object-contain"
                   />
-                  <span className="text-2xl font-semibold tracking-tight">Pushkara</span>
+                  <span className="text-2xl font-semibold tracking-tight">Pushkara Organic</span>
                 </div>
 
                 <div className="col-start-3 flex items-center justify-end gap-3">

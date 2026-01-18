@@ -5,10 +5,14 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.75fr)] xl:gap-16 2xl:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] 2xl:gap-20">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#f6cf57] text-xl font-bold text-[#3b2318]">
-                P
-              </div>
-              <div className="text-3xl font-semibold text-[#fef6e9]">pushkara</div>
+              <img
+                src="/pushkara_logo.png"
+                alt="Pushkara Organics"
+                className="h-20 w-auto object-contain"
+              />
+              <span className="text-[3rem] font-semibold leading-none text-[#fef6e9]">
+                Pushkara Organic
+              </span>
             </div>
 
             <p className="max-w-lg text-base leading-relaxed text-[#e7d6c4]">
@@ -168,7 +172,7 @@ export default function Footer() {
                       <path d="m22 6-10 7L2 6" />
                     </svg>
                   </span>
-                  <span>pushkara@gmail.com</span>
+                  <span>pushkaraorganics@gmail.com</span>
                 </div>
               </div>
             </div>

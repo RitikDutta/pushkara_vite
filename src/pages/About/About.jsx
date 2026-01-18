@@ -369,6 +369,12 @@ export default function About() {
 
       <section className="about-closing bg-[#2b170e] text-[#fef3e2]">
         <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:py-20">
+          <img
+            src="/pushkara_logo.png"
+            alt="Pushkara logo"
+            className="mx-auto mb-6 h-32 w-auto sm:h-40"
+            loading="lazy"
+          />
           <h2 className="text-3xl font-semibold sm:text-4xl" data-animate>
             The Pushkara Promise
           </h2>
@@ -385,7 +391,7 @@ export default function About() {
             className="mt-6 text-sm uppercase tracking-[0.35em] text-[#f6c244]"
             data-animate
           >
-            Pure tradition. Timeless taste.
+            In Tradition We Trust.
           </p>
         </div>
       </section>
