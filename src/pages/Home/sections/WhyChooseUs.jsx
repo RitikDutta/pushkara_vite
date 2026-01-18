@@ -99,11 +99,11 @@ export default function WhyChooseUs() {
           </div>
 
           <div className="relative flex h-full items-end justify-center pt-6 lg:pt-10">
-            <div className="absolute h-[280px] w-[280px] rounded-full bg-[#f6c244]/25 blur-3xl sm:h-[340px] sm:w-[340px] lg:h-[400px] lg:w-[400px]" />
+            <div className="absolute h-[240px] w-[240px] rounded-full bg-[#f6c244]/25 blur-3xl sm:h-[300px] sm:w-[300px] md:h-[340px] md:w-[340px] lg:h-[380px] lg:w-[380px] xl:h-[420px] xl:w-[420px]" />
             <img
               src={whyUsImage}
               alt="Fresh dairy illustration"
-              className="relative z-10 w-[300px] object-contain sm:w-[380px] lg:w-[460px]"
+              className="relative z-10 w-[240px] object-contain sm:w-[300px] md:w-[340px] lg:w-[400px] xl:w-[460px]"
               loading="lazy"
             />
           </div>
@@ -133,10 +133,10 @@ function FeatureItem({ icon: Icon, title, text, rowIndex, side }) {
         <Icon className="h-5 w-5" />
       </span>
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold text-[#4b2e18] sm:text-xl lg:whitespace-nowrap">
+        <h3 className="text-lg font-semibold text-[#4b2e18] sm:text-xl 2xl:whitespace-nowrap">
           {title}
         </h3>
-        <p className="text-base text-[#7a521e] lg:whitespace-nowrap">{text}</p>
+        <p className="text-base text-[#7a521e] 2xl:whitespace-nowrap">{text}</p>
       </div>
     </div>
   );
