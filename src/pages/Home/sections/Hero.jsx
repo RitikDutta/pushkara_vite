@@ -83,7 +83,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="hero-tile shine-card hero-soft-shadow relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/third_banner_pot.webp')] bg-cover bg-center sm:min-h-[240px] md:bg-[url('/third_banner.png')]">
+            <div className="hero-tile shine-card hero-soft-shadow relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/third_banner_pot.webp')] bg-cover bg-center sm:min-h-[240px] md:bg-[url('/third_banner.webp')]">
               <div className="absolute -left-8 bottom-6 h-16 w-16 rotate-3 rounded-3xl bg-white/70 shadow-inner shadow-amber-100" />
 
               <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
