@@ -92,9 +92,6 @@ export default function Navbar() {
 
               <div className="flex flex-col gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-4">
                 <nav className="hidden items-center justify-center gap-5 text-sm font-medium text-[#4b3307] lg:col-start-2 lg:flex">
-                  <NavLink to="/" className="transition hover:text-[#0f8a78]">
-                    Home
-                  </NavLink>
                   <NavLink to="/about" className="transition hover:text-[#0f8a78]">
                     About Us
                   </NavLink>
@@ -139,9 +136,6 @@ export default function Navbar() {
               >
                 <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-[#4b3307] shadow-sm">
                   <nav className="flex flex-col gap-3">
-                    <NavLink to="/" className="transition hover:text-[#0f8a78]" onClick={handleClose}>
-                      Home
-                    </NavLink>
                     <NavLink
                       to="/about"
                       className="transition hover:text-[#0f8a78]"
