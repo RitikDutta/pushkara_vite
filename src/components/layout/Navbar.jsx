@@ -1,6 +1,12 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleToggle = () => setIsMenuOpen((open) => !open);
+  const handleClose = () => setIsMenuOpen(false);
+
   return (
     <header
       data-scroll-header
@@ -67,8 +73,15 @@ export default function Navbar() {
                     </div>
                   </div>
 
-                  <button className="inline-flex items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-700 transition hover:bg-slate-100 lg:hidden">
-                    <MenuIcon />
+                  <button
+                    type="button"
+                    aria-expanded={isMenuOpen}
+                    aria-controls="mobile-menu"
+                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                    onClick={handleToggle}
+                    className="inline-flex items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-700 transition hover:bg-slate-100 lg:hidden"
+                  >
+                    {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
                   </button>
                 </div>
               </div>
@@ -84,10 +97,6 @@ export default function Navbar() {
                   <NavLink to="/product" className="transition hover:text-[#0f8a78]">
                     Shop All
                   </NavLink>
-                  <button className="inline-flex items-center gap-1 transition hover:text-[#0f8a78]">
-                    Categories
-                    <ChevronDownIcon />
-                  </button>
                   <a href="#deals" className="transition hover:text-[#0f8a78]">
                     Deals & Offers
                   </a>
@@ -114,10 +123,50 @@ export default function Navbar() {
                         0
                       </span>
                     </button>
-                    <button className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:bg-slate-100 lg:hidden">
-                      <MenuIcon />
-                    </button>
                   </div>
+                </div>
+              </div>
+
+              <div
+                id="mobile-menu"
+                className={`lg:hidden overflow-hidden transition-all duration-300 ${
+                  isMenuOpen ? "max-h-[360px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+                }`}
+              >
+                <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-[#4b3307] shadow-sm">
+                  <nav className="flex flex-col gap-3">
+                    <NavLink to="/" className="transition hover:text-[#0f8a78]" onClick={handleClose}>
+                      Home
+                    </NavLink>
+                    <NavLink
+                      to="/about"
+                      className="transition hover:text-[#0f8a78]"
+                      onClick={handleClose}
+                    >
+                      About Us
+                    </NavLink>
+                    <NavLink
+                      to="/product"
+                      className="transition hover:text-[#0f8a78]"
+                      onClick={handleClose}
+                    >
+                      Shop All
+                    </NavLink>
+                    <a
+                      href="#deals"
+                      className="transition hover:text-[#0f8a78]"
+                      onClick={handleClose}
+                    >
+                      Deals & Offers
+                    </a>
+                    <NavLink
+                      to="/contact"
+                      className="transition hover:text-[#0f8a78]"
+                      onClick={handleClose}
+                    >
+                      Contact
+                    </NavLink>
+                  </nav>
                 </div>
               </div>
             </div>
@@ -128,28 +177,23 @@ export default function Navbar() {
   );
 }
 
-function ChevronDownIcon({ className = "" }) {
-  return (
-    <svg
-      className={`h-3.5 w-3.5 ${className}`}
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path
-        fillRule="evenodd"
-        d="M5.22 7.47a.75.75 0 0 1 1.06 0L10 11.19l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 8.53a.75.75 0 0 1 0-1.06Z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
-
 function MenuIcon() {
   return (
     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path
         d="M4 7h16M4 12h16M4 17h12"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path
+        d="M6 6l12 12M18 6l-12 12"
         strokeWidth="1.8"
         strokeLinecap="round"
       />
