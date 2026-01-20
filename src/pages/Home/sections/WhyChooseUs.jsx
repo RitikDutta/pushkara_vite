@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const whyUsImage = "/why_us.png";
+const whyUsImage = "/why_us.webp";
 
 const leftFeatures = [
   {

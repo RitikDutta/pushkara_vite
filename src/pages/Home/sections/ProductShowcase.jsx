@@ -7,17 +7,17 @@ const imageOptions = [
   {
     id: "classic",
     name: "Classic Pot",
-    image: "/1x.png",
+    image: "/1x.webp",
   },
   {
     id: "reserve",
     name: "Reserve Pot",
-    image: "/2x.png",
+    image: "/2x.webp",
   },
   {
     id: "heritage",
     name: "Heritage Pot",
-    image: "/3x.png",
+    image: "/3x.webp",
   },
 ];
 

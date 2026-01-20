@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 const heroBg = "/hero_bg.png";
-const heroImage = "/hero_image.png";
+const heroImage = "/hero_image.webp";
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -66,7 +66,7 @@ export default function Hero() {
           </div>
 
           <div className="grid h-full grid-cols-2 auto-rows-[minmax(200px,1fr)] gap-4 sm:auto-rows-[minmax(240px,1fr)] md:col-span-1 md:row-span-2 md:h-full md:grid-cols-1 md:grid-rows-2">
-            <div className="hero-tile shine-card hero-soft-shadow relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/second_banner_pot.png')] bg-cover bg-center sm:min-h-[240px] md:bg-[url('/second_banner.png')]">
+            <div className="hero-tile shine-card hero-soft-shadow relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/second_banner_pot.webp')] bg-cover bg-center sm:min-h-[240px] md:bg-[url('/second_banner.webp')]">
               <div className="absolute -right-10 top-6 h-20 w-20 rotate-6 rounded-3xl bg-white/70 shadow-inner shadow-emerald-100" />
 
               <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
@@ -83,7 +83,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="hero-tile shine-card hero-soft-shadow relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/third_banner_pot.png')] bg-cover bg-center sm:min-h-[240px] md:bg-[url('/third_banner.png')]">
+            <div className="hero-tile shine-card hero-soft-shadow relative h-full min-h-[200px] overflow-hidden rounded-3xl border border-white/70 bg-[#fff2d4] bg-[url('/third_banner_pot.webp')] bg-cover bg-center sm:min-h-[240px] md:bg-[url('/third_banner.png')]">
               <div className="absolute -left-8 bottom-6 h-16 w-16 rotate-3 rounded-3xl bg-white/70 shadow-inner shadow-amber-100" />
 
               <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
