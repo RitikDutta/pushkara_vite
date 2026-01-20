@@ -3,25 +3,51 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const reels = [
-  { id: "u0Q5HBRDi-w", title: "Reel 01" },
-  { id: "SKLFACb_KAg", title: "Reel 02" },
-  { id: "6z7L-f--WdE", title: "Reel 03" },
-  { id: "r7Ts35y5fSA", title: "Reel 04" },
-  { id: "9MPwrBMFesE", title: "Reel 05" },
-  { id: "DdP_idGOhBE", title: "Reel 06" },
-  { id: "oxeux8TpLSI", title: "Reel 07" },
-  { id: "s1D1fpvl-A0", title: "Reel 08" },
+  {
+    key: "reel-01",
+    id: "BTr66KAcrgA",
+    title: "Reel 01",
+    preview: "/reel_video_1.webp",
+  },
+  {
+    key: "reel-02",
+    id: "BTr66KAcrgA",
+    title: "Reel 02",
+    preview: "/reel_video_2.webp",
+  },
+  {
+    key: "reel-03",
+    id: "BTr66KAcrgA",
+    title: "Reel 03",
+    preview: "/reel_video_3.webp",
+  },
+  {
+    key: "reel-04",
+    id: "BTr66KAcrgA",
+    title: "Reel 04",
+    preview: "/reel_video_4.webp",
+  },
+  {
+    key: "reel-05",
+    id: "BTr66KAcrgA",
+    title: "Reel 05",
+    preview: "/reel_video_5.webp",
+  },
+  {
+    key: "reel-06",
+    id: "BTr66KAcrgA",
+    title: "Reel 06",
+    preview: "/reel_video_6.webp",
+  },
 ];
 
 const buildEmbedUrl = (id) =>
   `https://www.youtube.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
 
-const buildThumbUrl = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-
 export default function Reels() {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
-  const [activeId, setActiveId] = useState(null);
+  const [activeKey, setActiveKey] = useState(null);
   const [hasOverflow, setHasOverflow] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -113,8 +139,8 @@ export default function Reels() {
     track.scrollBy({ left: amount * direction, behavior: "smooth" });
   };
 
-  const handlePlay = (id) => {
-    setActiveId((current) => (current === id ? null : id));
+  const handlePlay = (key) => {
+    setActiveKey((current) => (current === key ? null : key));
   };
 
   return (
@@ -158,10 +184,10 @@ export default function Reels() {
 
           <div ref={trackRef} className="reels-track" role="list">
             {reels.map((reel) => {
-              const isActive = activeId === reel.id;
+              const isActive = activeKey === reel.key;
 
               return (
-                <div key={reel.id} className="reels-card" role="listitem">
+                <div key={reel.key} className="reels-card" role="listitem">
                   <div className="reels-card-shell">
                     <div className="reels-card-media">
                       {isActive ? (
@@ -173,8 +199,8 @@ export default function Reels() {
                         />
                       ) : (
                         <img
-                          src={buildThumbUrl(reel.id)}
-                          alt={`${reel.title} thumbnail`}
+                          src={reel.preview}
+                          alt={`${reel.title} preview`}
                           loading="lazy"
                         />
                       )}
@@ -182,7 +208,7 @@ export default function Reels() {
                         <button
                           type="button"
                           className="reels-play-button"
-                          onClick={() => handlePlay(reel.id)}
+                          onClick={() => handlePlay(reel.key)}
                           aria-label={`Play ${reel.title}`}
                         >
                           <span className="reels-play-icon">
@@ -194,7 +220,7 @@ export default function Reels() {
                         <button
                           type="button"
                           className="reels-close-button"
-                          onClick={() => handlePlay(reel.id)}
+                          onClick={() => handlePlay(reel.key)}
                           aria-label={`Close ${reel.title}`}
                         >
                           <CloseIcon />
