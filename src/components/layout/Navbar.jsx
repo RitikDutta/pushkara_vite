@@ -30,14 +30,18 @@ export default function Navbar() {
           <div className="mx-auto max-w-[1600px] px-4">
             <div className="flex flex-col gap-3 py-3 lg:py-2">
               <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4">
-                <div className="col-start-2 flex items-center gap-3 justify-self-center">
+                <NavLink
+                  to="/"
+                  onClick={handleClose}
+                  className="col-start-2 flex items-center gap-3 justify-self-center"
+                >
                   <img
                     src="/logo.png"
                     alt="Pushkara logo"
                     className="h-10 w-10 rounded-xl object-contain"
                   />
                   <span className="text-2xl font-semibold tracking-tight">Pushkara Organic</span>
-                </div>
+                </NavLink>
 
                 <div className="col-start-3 flex items-center justify-end gap-3">
                   <div className="hidden items-center gap-3 xl:flex">
