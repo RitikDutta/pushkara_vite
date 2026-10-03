@@ -90,7 +90,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-4">
+              <div className="hidden gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-4">
                 <nav className="hidden items-center justify-center gap-5 text-sm font-medium text-[#4b3307] lg:col-start-2 lg:flex">
                   <NavLink to="/about" className="transition hover:text-[#0f8a78]">
                     About Us
@@ -106,19 +106,34 @@ export default function Navbar() {
                   </NavLink>
                 </nav>
 
-                <div className="flex items-center justify-between gap-4 lg:col-start-3 lg:justify-self-end">
-                  <button className="hidden items-center gap-2 text-sm font-medium text-slate-700 transition hover:text-[#0f8a78] sm:flex">
+                {/* Preserve these controls for when account and shopping features are ready. */}
+                <div className="hidden items-center justify-between gap-4 lg:col-start-3 lg:justify-self-end">
+                  <button
+                    type="button"
+                    disabled
+                    className="hidden items-center gap-2 text-sm font-medium text-slate-700 transition enabled:hover:text-[#0f8a78] disabled:cursor-not-allowed disabled:opacity-50 sm:flex"
+                  >
                     <UserIcon />
                     Accounts
                   </button>
                   <div className="flex items-center gap-3">
-                    <button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:bg-slate-100">
+                    <button
+                      type="button"
+                      disabled
+                      aria-label="Wishlist"
+                      className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition enabled:hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
                       <HeartIcon />
                       <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
                         0
                       </span>
                     </button>
-                    <button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:bg-slate-100">
+                    <button
+                      type="button"
+                      disabled
+                      aria-label="Shopping cart"
+                      className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition enabled:hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
                       <CartIcon />
                       <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
                         0
