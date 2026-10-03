@@ -21,7 +21,7 @@ const highlights = [
   },
 ];
 
-const STORY_VIDEO_ID = "8bHRcvI2EqM";
+const STORY_VIDEO_ID = "PQfb5Kzl_Wo";
 const PREVIEW_VIDEO_SRC = `https://www.youtube.com/embed/${STORY_VIDEO_ID}?autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&loop=1&playlist=${STORY_VIDEO_ID}`;
 const FULL_VIDEO_SRC = `https://www.youtube.com/embed/${STORY_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`;
 

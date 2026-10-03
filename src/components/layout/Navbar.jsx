@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+const SHOW_SHOPPING_CONTROLS = false;
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -106,41 +108,43 @@ export default function Navbar() {
                   </NavLink>
                 </nav>
 
-                {/* Preserve these controls for when account and shopping features are ready. */}
-                <div className="hidden items-center justify-between gap-4 lg:col-start-3 lg:justify-self-end">
-                  <button
-                    type="button"
-                    disabled
-                    className="hidden items-center gap-2 text-sm font-medium text-slate-700 transition enabled:hover:text-[#0f8a78] disabled:cursor-not-allowed disabled:opacity-50 sm:flex"
-                  >
-                    <UserIcon />
-                    Accounts
-                  </button>
-                  <div className="flex items-center gap-3">
+                {/* Keep these controls in the source without rendering them. */}
+                {SHOW_SHOPPING_CONTROLS && (
+                  <div className="flex items-center justify-between gap-4 lg:col-start-3 lg:justify-self-end">
                     <button
                       type="button"
                       disabled
-                      aria-label="Wishlist"
-                      className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition enabled:hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="hidden items-center gap-2 text-sm font-medium text-slate-700 transition enabled:hover:text-[#0f8a78] disabled:cursor-not-allowed disabled:opacity-50 sm:flex"
                     >
-                      <HeartIcon />
-                      <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
-                        0
-                      </span>
+                      <UserIcon />
+                      Accounts
                     </button>
-                    <button
-                      type="button"
-                      disabled
-                      aria-label="Shopping cart"
-                      className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition enabled:hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      <CartIcon />
-                      <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
-                        0
-                      </span>
-                    </button>
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        disabled
+                        aria-label="Wishlist"
+                        className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition enabled:hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        <HeartIcon />
+                        <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
+                          0
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        disabled
+                        aria-label="Shopping cart"
+                        className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition enabled:hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        <CartIcon />
+                        <span className="absolute -top-1 -right-1 grid h-4 w-4 place-items-center rounded-full bg-[#f6c244] text-[10px] font-bold text-[#4b3307]">
+                          0
+                        </span>
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               <div
