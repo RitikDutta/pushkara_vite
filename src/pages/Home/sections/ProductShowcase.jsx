@@ -2,21 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PurchaseButton, { AmazonLink } from "../../../features/products/components/PurchaseButton";
+import { a2Ghee } from "../../../features/products/product";
 
 const imageOptions = [
   {
     id: "classic",
-    name: "Classic Pot",
+    name: "Pushkara A2 ghee jars",
     image: "/1x.webp",
   },
   {
     id: "reserve",
-    name: "Reserve Pot",
+    name: "Pushkara A2 ghee signature packaging",
     image: "/2x.webp",
   },
   {
     id: "heritage",
-    name: "Heritage Pot",
+    name: "Back label of a Pushkara A2 ghee jar",
     image: "/3x.webp",
   },
 ];
@@ -138,7 +140,7 @@ export default function ProductShowcase() {
             </div>
 
             <h1 className="product-title text-3xl font-semibold text-[#fff3d6] sm:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl">
-              Golden Pottery Ghee
+              {a2Ghee.name}
             </h1>
 
             <p className="mx-auto max-w-xl text-sm text-[#f7e6c2]/85 sm:mx-0 sm:text-base xl:max-w-2xl xl:text-base 2xl:max-w-3xl 2xl:text-lg">
@@ -147,20 +149,21 @@ export default function ProductShowcase() {
 
             <div className="flex flex-wrap items-end justify-center gap-4 sm:justify-start">
               <span className="product-price text-3xl font-semibold text-[#f6c244] sm:text-4xl xl:text-4xl 2xl:text-5xl">
-                Rs 1,999
+                {a2Ghee.price}
               </span>
               <span className="text-xs uppercase tracking-[0.35em] text-[#f7e6c2]/70 xl:text-xs 2xl:text-sm">
-                1999 rupees
+                Traditionally crafted
               </span>
             </div>
 
             <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
-              <Link to="/product" className={buyNowClassName}>
+              <PurchaseButton className={buyNowClassName}>
                 Buy Now
-              </Link>
-              <button className="btn-outline w-full rounded-xl px-5 py-3 text-sm font-semibold sm:w-auto xl:px-5 xl:py-3 xl:text-sm 2xl:px-6 2xl:py-4 2xl:text-base">
+              </PurchaseButton>
+              <AmazonLink className="btn-outline inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold sm:w-auto xl:px-5 xl:py-3 xl:text-sm 2xl:px-6 2xl:py-4 2xl:text-base" />
+              <Link to="/product" className="btn-outline w-full rounded-xl px-5 py-3 text-sm font-semibold sm:w-auto xl:px-5 xl:py-3 xl:text-sm 2xl:px-6 2xl:py-4 2xl:text-base">
                 View Details
-              </button>
+              </Link>
             </div>
 
             <div className="mx-auto max-w-xl space-y-2 sm:mx-0 xl:max-w-2xl 2xl:max-w-3xl">
@@ -169,7 +172,7 @@ export default function ProductShowcase() {
               </p>
               <p className="text-sm text-[#f7e6c2]/85 sm:text-base xl:text-base 2xl:text-lg">
                 Crafted in small batches using the traditional bilona method. We
-                slow-cook the cream for a deep, nutty aroma and seal it in glass
+                slow-cook the churned butter for a deep, nutty aroma and seal it in glass
                 to keep every spoonful rich, clean, and comforting.
               </p>
             </div>

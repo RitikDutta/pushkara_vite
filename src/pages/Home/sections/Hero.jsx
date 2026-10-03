@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom";
 
 const heroBg = "/hero_bg.png";
 const heroImage = "/hero_image.webp";
@@ -46,9 +47,9 @@ export default function Hero() {
                     made from fresh milk, delivered to you.
                   </p>
 
-                  <button className="mt-2 w-fit rounded-xl bg-[#ff5c5c] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:translate-y-[1px] hover:shadow max-[487px]:px-4 max-[487px]:py-2.5 max-[487px]:text-[12px]">
+                  <Link to="/product" className="mt-2 w-fit rounded-xl bg-[#ff5c5c] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:translate-y-[1px] hover:shadow max-[487px]:px-4 max-[487px]:py-2.5 max-[487px]:text-[12px]">
                     Shop now
-                  </button>
+                  </Link>
                 </div>
 
                 <div className="hero-image relative flex w-1/2 min-w-[220px] max-w-[280px] items-end justify-center self-stretch pt-4 pr-4 sm:pt-6 sm:pr-6 lg:pt-10 lg:pr-10 sm:max-w-[360px] md:w-[clamp(360px,42vw,600px)] md:min-w-[360px] md:max-w-[600px] max-[487px]:min-w-[180px] max-[487px]:max-w-[220px] max-[487px]:pt-3 max-[487px]:pr-3 max-[415px]:w-full max-[415px]:min-w-0 max-[415px]:max-w-none max-[415px]:self-auto max-[415px]:items-center max-[415px]:pt-0 max-[415px]:pr-0 max-[415px]:h-[220px]">
@@ -77,9 +78,9 @@ export default function Hero() {
                     {/* Start your daily shopping with some organic food. */}
                   </p>
                 </div>
-                <button className="self-start text-sm font-semibold text-[#7a521e] transition hover:opacity-75">
+                <Link to="/product" className="self-start text-sm font-semibold text-[#7a521e] transition hover:opacity-75">
                   Shop now →
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -94,9 +95,9 @@ export default function Hero() {
                     {/* Add your organic vegetables & fruits, or a promo image. */}
                   </p>
                 </div>
-                <button className="self-start text-sm font-semibold text-[#7a521e] transition hover:opacity-75">
+                <Link to="/product" className="self-start text-sm font-semibold text-[#7a521e] transition hover:opacity-75">
                   Shop now →
-                </button>
+                </Link>
               </div>
             </div>
           </div>
